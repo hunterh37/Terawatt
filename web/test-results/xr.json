@@ -1,0 +1,55 @@
+{
+ "device": "IWER metaQuest3 (emulated)",
+ "results": [
+  {
+   "id": "XR button mounted",
+   "ok": true,
+   "detail": "START XR"
+  },
+  {
+   "id": "table at desk height in front of viewer",
+   "ok": true,
+   "detail": "{\"table\":[0,0.8,-0.58],\"head\":[0,1.6,0.02],\"scale\":1,\"panelVisible\":true,\"controls\":false}"
+  },
+  {
+   "id": "select on a table object zooms in",
+   "ok": true,
+   "detail": "target=[-0.135,0.844,-0.58] level=hall"
+  },
+  {
+   "id": "panel zoom out button",
+   "ok": true,
+   "detail": "hall -> building"
+  },
+  {
+   "id": "panel lens button",
+   "ok": true,
+   "detail": "heat"
+  },
+  {
+   "id": "panel year button",
+   "ok": true,
+   "detail": "2035 -> 2034"
+  },
+  {
+   "id": "panel preset button",
+   "ok": true,
+   "detail": "null -> fit-grid"
+  },
+  {
+   "id": "panel life size toggle",
+   "ok": true,
+   "detail": "on {\"s\":24.99,\"y\":0} off {\"s\":1,\"y\":0.8}"
+  },
+  {
+   "id": "session ends and restores the desktop view",
+   "ok": true,
+   "detail": "{\"presenting\":false,\"table\":[0,0,0],\"controls\":true}"
+  },
+  {
+   "id": "no XR errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

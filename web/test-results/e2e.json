@@ -1,0 +1,190 @@
+{
+ "results": [
+  {
+   "id": "boot",
+   "ok": true,
+   "detail": "{\"level\":\"fleet\",\"preset\":\"fit-grid\",\"ff\":\"serving\"}"
+  },
+  {
+   "id": "level:offworld",
+   "ok": true,
+   "detail": "rows=10 picks=4 unsourced= caption=\"Orbit is switched off here; a 2.6 s round trip would rule the Moon out for chat.\""
+  },
+  {
+   "id": "level:fleet",
+   "ok": true,
+   "detail": "rows=9 picks=6 unsourced= caption=\"6 Earth sites share a 500 MW grid; they draw 499 MW and serve 32% of peak demand.\""
+  },
+  {
+   "id": "level:site",
+   "ok": true,
+   "detail": "rows=11 picks=2 unsourced= caption=\"West Texas draws 85 MW across 2 halls at PUE 1.12, from a 83 MW share of the grid.\""
+  },
+  {
+   "id": "level:building",
+   "ok": true,
+   "detail": "rows=9 picks=1 unsourced= caption=\"The West Texas building has 2 halls holding 96 racks; it draws 85 MW at PUE 1.12.\""
+  },
+  {
+   "id": "level:hall",
+   "ok": true,
+   "detail": "rows=9 picks=2 unsourced= caption=\"Hall 1 of 2 holds 64 racks drawing 51 MW of IT power; direct liquid puts it at PUE 1.12.\""
+  },
+  {
+   "id": "level:rack",
+   "ok": true,
+   "detail": "rows=9 picks=1 unsourced= caption=\"One GPU rack draws 792 kW across 144 chips; direct liquid cooling at West Texas holds up t\""
+  },
+  {
+   "id": "level:chip",
+   "ok": true,
+   "detail": "rows=9 picks=1 unsourced= caption=\"A chip from the GPU rack draws 5.5 kW through 4 compute dies, a heat flux of 1,114 W/cm2, \""
+  },
+  {
+   "id": "AC1 zoom in",
+   "ok": true,
+   "detail": "Earth fleet / West Texas"
+  },
+  {
+   "id": "AC2 zoom out",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "id": "AC3 off-world path",
+   "ok": true,
+   "detail": "rack then site"
+  },
+  {
+   "id": "AC4 lenses",
+   "ok": true,
+   "detail": "Heat: site PUE (facility power / IT power):5 Power: facility MW per site:5 Cost: energy price per site:5 Sentiment: local news stance:3 Water: megalitres (ML) per year:1 | distinct colour states 5 of 5"
+  },
+  {
+   "id": "AC5 year slider",
+   "ok": true,
+   "detail": "{\"kW\":132,\"chips\":72,\"j\":3.6338050314465415,\"label\":\"GB200 NVL72\"}"
+  },
+  {
+   "id": "AC6 first failing",
+   "ok": true,
+   "detail": "banner=\"!Grid✓Budget✕Serving✓Cooling fit✓Latency✓WaterFirst failing checkServingServes 64% of interactive an\" cause=rack after=rack"
+  },
+  {
+   "id": "AC7 grid binds",
+   "ok": true,
+   "detail": "{\"ff\":\"grid\",\"mw\":1553.9931}"
+  },
+  {
+   "id": "AC8 source popover",
+   "ok": true,
+   "detail": "{\"found\":true,\"open\":true,\"text\":\"Challenge slides s9.setting$30B five-year budget, 500 MW of Earth grid power across all sites, $200/kg to orbit, 3 user \"}"
+  },
+  {
+   "id": "AC9 business case",
+   "ok": true,
+   "detail": "npv -11B -> 48B"
+  },
+  {
+   "id": "AC10 projection chart",
+   "ok": true,
+   "detail": "svgs=3"
+  },
+  {
+   "id": "AC11 existing data centers",
+   "ok": true,
+   "detail": "{\"link\":true,\"text\":true,\"campuses\":12,\"campusRow\":true,\"abilene\":true}"
+  },
+  {
+   "id": "AC14 chip workbench",
+   "ok": true,
+   "detail": "dies 4 -> 6: 5.50 -> 8.25 kW, flux 1114 -> 1122; HBM 8: flux 1089 (chip 5.50 kW); heat lens recoloured true"
+  },
+  {
+   "id": "level card renders",
+   "ok": true,
+   "detail": "chip-package-final.jpg:640 rack-ai-1mw.jpg:640 orbital-dc-module.jpg:640 none@hall"
+  },
+  {
+   "id": "tour",
+   "ok": true,
+   "detail": "Case B: 50M agent developers in 2035. Serving all of them takes 1.42 GW of IT; Earth's grid gives 500 MW. We serve 32%."
+  },
+  {
+   "id": "PRD renders",
+   "ok": true,
+   "detail": "{\"s\":true,\"t\":true,\"a\":true,\"r\":true,\"imgs\":20,\"broken\":[],\"missingSrc\":[]}"
+  },
+  {
+   "id": "no console errors",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "errors": [],
+ "levelInfo": {
+  "offworld": {
+   "level": "offworld",
+   "caption": "Orbit is switched off here; a 2.6 s round trip would rule the Moon out for chat.",
+   "rows": 10,
+   "unsourced": [],
+   "legend": "Power: IT MW by place",
+   "placeholder": false,
+   "pickables": 4
+  },
+  "fleet": {
+   "level": "fleet",
+   "caption": "6 Earth sites share a 500 MW grid; they draw 499 MW and serve 32% of peak demand.",
+   "rows": 9,
+   "unsourced": [],
+   "legend": "Power: facility MW per site",
+   "placeholder": false,
+   "pickables": 6
+  },
+  "site": {
+   "level": "site",
+   "caption": "West Texas draws 85 MW across 2 halls at PUE 1.12, from a 83 MW share of the grid.",
+   "rows": 11,
+   "unsourced": [],
+   "legend": "Power: facility MW",
+   "placeholder": false,
+   "pickables": 2
+  },
+  "building": {
+   "level": "building",
+   "caption": "The West Texas building has 2 halls holding 96 racks; it draws 85 MW at PUE 1.12.",
+   "rows": 9,
+   "unsourced": [],
+   "legend": "Hall facility power",
+   "placeholder": false,
+   "pickables": 1
+  },
+  "hall": {
+   "level": "hall",
+   "caption": "Hall 1 of 2 holds 64 racks drawing 51 MW of IT power; direct liquid puts it at PUE 1.12.",
+   "rows": 9,
+   "unsourced": [],
+   "legend": "Rack power",
+   "placeholder": false,
+   "pickables": 2
+  },
+  "rack": {
+   "level": "rack",
+   "caption": "One GPU rack draws 792 kW across 144 chips; direct liquid cooling at West Texas holds up to 1.50 MW per rack.",
+   "rows": 9,
+   "unsourced": [],
+   "legend": "Rack power",
+   "placeholder": false,
+   "pickables": 1
+  },
+  "chip": {
+   "level": "chip",
+   "caption": "A chip from the GPU rack draws 5.5 kW through 4 compute dies, a heat flux of 1,114 W/cm2, so it needs liquid cooling.",
+   "rows": 9,
+   "unsourced": [],
+   "legend": "Power per part",
+   "placeholder": false,
+   "pickables": 1
+  }
+ }
+}

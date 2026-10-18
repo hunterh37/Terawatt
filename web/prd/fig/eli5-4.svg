@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="eli5-4-title eli5-4-desc">
+  <title id="eli5-4-title">The break-even price idea</title>
+  <desc id="eli5-4-desc">Break-even price per user per month is the yearly running cost plus the build cost spread over five years, divided by users served and by twelve months; the start preset gives $34.45, between the $20 plans and the plans from $100.</desc>
+  <rect width="960" height="540" fill="#0b0f17"/>
+
+  <text x="48" y="44" fill="#e8edf5" font-size="24" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The break-even price</text>
+  <text x="48" y="72" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The flat monthly price per user that leaves the build with no profit and no loss over five years.</text>
+
+  <!-- box 1 -->
+  <rect x="48" y="104" width="216" height="112" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#8a96aa" stroke-width="1.2"/>
+  <text x="156" y="132" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Yearly running cost</text>
+  <text x="156" y="156" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">plus the build cost</text>
+  <text x="156" y="180" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">repaid over 5 years</text>
+  <text x="156" y="204" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">(a.breakeven, s9.setting)</text>
+
+  <text x="280" y="168" text-anchor="middle" fill="#ffd34d" font-size="28" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">/</text>
+
+  <!-- box 2 -->
+  <rect x="296" y="104" width="168" height="112" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#8a96aa" stroke-width="1.2"/>
+  <text x="380" y="140" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Users served</text>
+  <text x="380" y="164" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">by the racks</text>
+  <text x="380" y="196" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">(d.capacity)</text>
+
+  <text x="480" y="168" text-anchor="middle" fill="#ffd34d" font-size="28" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">/</text>
+
+  <!-- box 3 -->
+  <rect x="496" y="104" width="152" height="112" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#8a96aa" stroke-width="1.2"/>
+  <text x="572" y="148" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">12 months</text>
+  <text x="572" y="172" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">in a year</text>
+
+  <text x="664" y="168" text-anchor="middle" fill="#ffd34d" font-size="28" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">=</text>
+
+  <!-- box 4: result (focal) -->
+  <rect x="680" y="104" width="232" height="112" rx="8" fill="#5ad1ff" fill-opacity="0.08" stroke="#5ad1ff" stroke-width="1.5"/>
+  <text x="796" y="130" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Break-even price</text>
+  <text x="796" y="154" text-anchor="middle" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">per user per month</text>
+  <text x="796" y="192" text-anchor="middle" fill="#5ad1ff" font-size="28" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">$34.45</text>
+  <text x="796" y="208" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">start preset</text>
+
+  <!-- scale -->
+  <text x="48" y="276" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Where that sits next to plans you can buy today</text>
+  <line x1="60" y1="380" x2="900" y2="380" stroke="#8a96aa" stroke-width="2"/>
+  <line x1="60" y1="372" x2="60" y2="388" stroke="#8a96aa" stroke-width="2"/>
+  <line x1="900" y1="372" x2="900" y2="388" stroke="#8a96aa" stroke-width="2"/>
+  <text x="60" y="456" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">$0</text>
+  <text x="900" y="456" text-anchor="end" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">$120</text>
+
+  <circle cx="200" cy="380" r="8" fill="#ffb547"/>
+  <text x="200" y="412" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">$20 a month</text>
+  <text x="200" y="432" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Plus and Pro plans</text>
+
+  <circle cx="760" cy="380" r="8" fill="#ffb547"/>
+  <text x="760" y="412" text-anchor="middle" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">from $100 a month</text>
+  <text x="760" y="432" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Max and Pro plans</text>
+
+  <line x1="300" y1="364" x2="300" y2="372" stroke="#5ad1ff" stroke-width="2"/>
+  <circle cx="300" cy="380" r="10" fill="#5ad1ff"/>
+  <text x="300" y="332" text-anchor="middle" fill="#5ad1ff" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Break-even $34.45</text>
+  <text x="300" y="356" text-anchor="middle" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">start preset (a.breakeven)</text>
+
+  <text x="48" y="484" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Charge less than this and the build loses money over five years. Charge more and it earns a return.</text>
+  <text x="48" y="506" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Needs no guess at 2035 prices. Discount rate 10% a year (a.discount). The app recomputes the number live.</text>
+  <text x="48" y="526" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Sources: d.finance, ext.sub_price. Scale is schematic: $0 to $120.</text>
+</svg>

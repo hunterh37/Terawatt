@@ -1,0 +1,100 @@
+<section id="result">
+  <h2>Result: what the twin shows, and how we know it works</h2>
+
+  <p class="lede">The twin runs in any modern browser and enters an immersive session on headsets that offer WebXR. Every figure below is engine output from <code>node scripts/presets-table.mjs</code>, which writes <code>test-results/presets.json</code>. The app recomputes all of them live as you move a slider.</p>
+
+  <div class="kpis">
+    <div class="kpi"><b class="num" data-src="d.capacity">575 racks</b><span>fit the start preset: Case B in 2035 on GPU racks, inside the 500 MW grid cap</span></div>
+    <div class="kpi"><b class="num" data-src="d.facility">499 of 500 MW</b><span>Earth facility power drawn across the six sites, so the grid is the wall</span></div>
+    <div class="kpi"><b class="num" data-src="d.capacity">32%</b><span>of Case B's peak demand served, which makes Serving the first failing check</span></div>
+    <div class="kpi"><b class="num" data-src="a.breakeven">$34.45</b><span>per user per month to break even on the build over five years</span></div>
+  </div>
+
+  <h3>What the model says</h3>
+  <ol>
+    <li><strong>The grid binds before the budget does.</strong> The start preset spends <span class="num" data-src="d.cost5yr">$23.6B</span> of the <span class="num" data-src="s9.setting">$30B</span> budget and still serves only <span class="num" data-src="d.capacity">32%</span> of peak demand, because the six Earth sites already draw <span class="num" data-src="d.facility">499 MW</span>. Serving every Case B user on Earth would draw <span class="num" data-src="d.facility">1,554 MW</span>, about three times the cap.</li>
+    <li><strong>Decode on LPUs cuts energy per output token by a third.</strong> Moving decode to LPU racks takes the fleet from <span class="num" data-src="d.jtoken">1.12 J</span> to <span class="num" data-src="d.jtoken">0.75 J</span> per output token and lifts the share served from <span class="num" data-src="d.capacity">32%</span> to <span class="num" data-src="d.capacity">48%</span>, inside the same 500 MW.</li>
+    <li><strong>Orbit nearly closes the serving gap, then the budget binds.</strong> Sending the overflow to low Earth orbit adds <span class="num" data-src="d.placement">499 MW</span> of compute and serves <span class="num" data-src="d.capacity">97%</span> of peak demand, at a five-year cost of <span class="num" data-src="d.cost5yr">$39.7B</span> against the <span class="num" data-src="s9.setting">$30B</span> budget. A <span class="num" data-src="s13.rtt">40 ms</span> round trip keeps orbit fast enough for chat; the Moon at <span class="num" data-src="s13.rtt">2.6 s</span> takes background work only.</li>
+    <li><strong>The price question has a clean answer.</strong> Agent developers would have to pay between <span class="num" data-src="a.breakeven">$19.66</span> and <span class="num" data-src="a.breakeven">$34.45</span> a month for five years to cover the build, against <span class="num" data-src="ext.sub_price">$20</span> plans sold today. The break-even price needs no guess about 2035 prices.</li>
+    <li><strong>Ten years of hardware is the biggest lever.</strong> The same demand on 2025 racks needs <span class="num" data-src="d.capacity">27,651 racks</span>, <span class="num" data-src="d.facility">4,001 MW</span> and <span class="num" data-src="d.cost5yr">$189.7B</span>, at <span class="num" data-src="d.jtoken">2.88 J</span> per output token.</li>
+  </ol>
+
+  <h3>The business case at a $20 plan</h3>
+  <p>Year-0 capex is racks, buildings and launches; each year after that earns subscription revenue and pays energy, carbon and maintenance. NPV discounts at <span class="num" data-src="a.discount">10%</span> a year. Payback counts undiscounted cash.</p>
+  <table>
+    <thead><tr><th>Preset</th><th class="n">NPV at $20 per user per month</th><th class="n">IRR</th><th class="n">Payback</th><th class="n">Break-even price</th></tr></thead>
+    <tbody>
+      <tr><td>Start: Case B in 500 MW of grid</td><td class="n"><span class="num" data-src="d.finance">-$10.6B</span></td><td class="n"><span class="num" data-src="d.finance">-11.7%</span></td><td class="n">never in 5 years</td><td class="n"><span class="num" data-src="a.breakeven">$34.45</span></td></tr>
+      <tr><td>Decode on LPUs, still 500 MW</td><td class="n"><span class="num" data-src="d.finance">-$3.2B</span></td><td class="n"><span class="num" data-src="d.finance">4.0%</span></td><td class="n"><span class="num" data-src="d.finance">4.4 years</span></td><td class="n"><span class="num" data-src="a.breakeven">$22.91</span></td></tr>
+      <tr><td>LPUs on Earth, overflow to orbit</td><td class="n"><span class="num" data-src="d.finance">+$0.8B</span></td><td class="n"><span class="num" data-src="d.finance">10.8%</span></td><td class="n"><span class="num" data-src="d.finance">3.7 years</span></td><td class="n"><span class="num" data-src="a.breakeven">$19.66</span></td></tr>
+    </tbody>
+  </table>
+  <p class="src">Only the orbit build clears a 10% discount rate at $20 a month, and it does so by spending past the $30B budget. Revenue counts users served, not users signed up.</p>
+
+  <h3>Acceptance criteria</h3>
+  <p>Each criterion from the Action section was checked by a test that ran, not by reading the code. Browser checks run in headless Chromium; the XR check runs under Meta's Immersive Web Emulation Runtime with a Quest 3 profile.</p>
+  <table>
+    <thead><tr><th>Id</th><th>Criterion</th><th>Checked by</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>AC1</td><td>Zoom in from the fleet to West Texas</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC2</td><td>Zoom out one level</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC3</td><td>Off-world path: orbit site straight to a rack</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC4</td><td>Lenses give at least four distinct colour states, the legend changes and the camera stays put</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC5</td><td>Year 2025 gives the GB200 NVL72 rack and more joules per token</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC6</td><td>Serving fails first; tapping it goes to the cause</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC7</td><td>All of Case B on Earth fails the Grid check</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC8</td><td>Every readout row on all seven levels names a valid source, and its i badge opens the source popover</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC9</td><td>NPV, IRR and payback update with the price; break-even does not depend on it</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC10</td><td>2025 to 2035 projection chart</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC11</td><td>The fleet shows known AI campuses (Abilene with a source) and the Cleanview totals with a link</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC12</td><td>Vision Pro: table at desk height, controller select zooms in, in-world panel works (zoom out, lens, year, preset, life size), session end restores the desktop</td><td><code>tests/e2e/xr.mjs</code> (emulated headset)</td><td>Pass in emulation. Not yet tried on a Vision Pro.</td></tr>
+      <tr><td>AC13</td><td>No em-dash; every source id exists</td><td><code>tests/sources.test.mjs</code></td><td>Pass</td></tr>
+      <tr><td>AC14</td><td>Chip workbench: going from 4 to 6 compute dies raises chip power and heat flux, 8 HBM stacks change heat flux, and the heat lens recolours</td><td><code>tests/e2e/smoke.mjs</code></td><td>Pass</td></tr>
+    </tbody>
+  </table>
+  <p class="src">Totals at build time: 24 of 24 browser checks, 10 of 10 XR checks and 24 of 24 engine and source tests passed.</p>
+
+  <h3>What it looks like</h3>
+  <div class="grid-2">
+    <figure class="fig"><img src="../docs/shots/lv-fleet.png" alt="The Earth fleet: a dotted globe with six site pins and a ring that fills to 499 of 500 MW."><figcaption>Earth fleet. The ring is the shared grid, nearly full.</figcaption></figure>
+    <figure class="fig"><img src="../docs/shots/lv-site.png" alt="The West Texas site: a ghost building, a substation on a grid line, dry coolers and a nearby planned campus."><figcaption>Site. The ghost building is sized by its megawatts.</figcaption></figure>
+    <figure class="fig"><img src="../docs/shots/lv-hall.png" alt="A hall of racks in rows, with orange prefill and blue decode tags and busbars overhead."><figcaption>Hall. Orange tags prefill, blue tags decode.</figcaption></figure>
+    <figure class="fig"><img src="../docs/shots/lv-rack.png" alt="One GPU rack with compute trays, a power shelf and a liquid manifold."><figcaption>Rack. The 2035 GPU rack at 792 kW.</figcaption></figure>
+    <figure class="fig"><img src="../docs/shots/lv-chip.png" alt="The chip workbench: compute dies and memory stacks under a power delivery layer."><figcaption>Chip. Add dies or memory stacks and watch the heat.</figcaption></figure>
+    <figure class="fig"><img src="../docs/shots/lv-offworld.png" alt="Earth, low Earth orbit, the Moon and Mars on one schematic map, each labelled with its round trip."><figcaption>Off-world. Distance is a log scale of round-trip time.</figcaption></figure>
+  </div>
+
+  <h3>The same objects in the Terawatt visionOS app</h3>
+  <div class="grid-2">
+    <figure class="fig"><img src="../assets/realityhd/rack-ai-1mw.jpg" alt="A tall black rack packed with compute trays."><figcaption>2035 GPU rack</figcaption></figure>
+    <figure class="fig"><img src="../assets/realityhd/rack-lpu.jpg" alt="A tall black rack of LPU trays."><figcaption>LPU decode rack</figcaption></figure>
+    <figure class="fig"><img src="../assets/realityhd/rack-air-42u.jpg" alt="A white 42U rack of air-cooled cards."><figcaption>Air-card rack</figcaption></figure>
+    <figure class="fig"><img src="../assets/realityhd/rack-nvl72-2025.jpg" alt="A black GB200 NVL72 rack."><figcaption>GB200 NVL72, 2025</figcaption></figure>
+    <figure class="fig"><img src="../assets/realityhd/chip-package-final.jpg" alt="Compute dies on a green substrate with the lid lifted."><figcaption>Chip package</figcaption></figure>
+    <figure class="fig"><img src="../assets/realityhd/orbital-dc-module.jpg" alt="A white pressurised module inside a truss frame."><figcaption>Orbital data center module</figcaption></figure>
+  </div>
+  <p class="src">Renders from RealityHD, Hunter Harris's procedural prop library for the Terawatt visionOS app, MIT licence. The web twin shows the matching render in its level card at the chip, rack and off-world levels.</p>
+
+  <h3>Limits we know about</h3>
+  <ul>
+    <li><strong>Vision Pro is tested in emulation only.</strong> The session, table placement, picking and the panel buttons for zoom out, lens, year, preset and life size pass under an emulated headset, where the emulator's controller select stands in for a Vision Pro pinch. The panel's recentre button is not tested. Gaze-and-pinch on a real Vision Pro uses the same select event, but nothing has been tried on a device yet.</li>
+    <li><strong>Geometry is schematic.</strong> Sizes on the table explain; the numbers in the panels are the data.</li>
+    <li><strong>Sentiment is a sample.</strong> One recent local news article per site, with a stance we labelled (<span class="num" data-src="ext.sentiment">source</span>). Two of the seven articles could not be re-fetched for a second check, and the data says so.</li>
+    <li><strong>Water stress is not retrieved.</strong> The water check uses a climate rule instead (<span class="num" data-src="a.water_rule">rule</span>).</li>
+    <li><strong>Prices are 2026 list prices,</strong> not 2035 forecasts. The break-even price avoids that guess.</li>
+    <li><strong>Building cost is a choice.</strong> The default is <span class="num" data-src="ext.cw_build">$17.6M</span> per MW from a 2026 industry guide; the Terawatt app engine uses <span class="num" data-src="tw.building">$11M</span>. The slider covers both.</li>
+    <li><strong>Cleanview's markers stay local.</strong> Its licence does not allow redistribution, so the public build credits the totals, <span class="num" data-src="cv.map">1,372 operating and 2,689 planned data centers with reported capacity</span>, and links to the map.</li>
+  </ul>
+
+  <h3>Reproduce it</h3>
+  <pre class="gherkin">npm test                          # engine and source tests
+node scripts/presets-table.mjs    # every preset through the engine, writes test-results/presets.json
+npm run presets                   # the same, as an npm script
+npm run serve                     # then open http://localhost:8145
+
+# browser checks (need playwright-core and a Chromium)
+PLAYWRIGHT_CORE=/path/to/playwright-core CHROME=/path/to/chromium node tests/e2e/smoke.mjs
+
+# XR checks (also need IWER, Meta's Immersive Web Emulation Runtime build)
+PLAYWRIGHT_CORE=/path/to/playwright-core CHROME=/path/to/chromium IWER=/path/to/iwer.min.js node tests/e2e/xr.mjs</pre>
+</section>

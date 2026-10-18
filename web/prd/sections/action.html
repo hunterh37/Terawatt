@@ -1,0 +1,170 @@
+<section id="action">
+  <h2>Action: what this build does and how it works</h2>
+
+  <p class="lede">Rack to the Future is one shared model drawn at seven scales. You set a scenario. The engine turns it into numbers. Seven level views, the control panels, the business panel and a Vision Pro mode all redraw from those same numbers. You can zoom from one chip out to the Earth fleet and on to orbit without leaving the page.</p>
+
+  <div class="callout">
+    <p><strong>The story the demo tells.</strong> Case B is <span class="num" data-src="s11.cases">50M</span> agent developers. On 2035 GPU racks it needs about <span class="num" data-src="d.capacity">1,790 racks</span>, roughly <span class="num" data-src="d.capacity">1.4 GW</span> of IT power. The Earth grid gives <span class="num" data-src="s9.setting">500 MW</span> across all sites. The twin shows that gap, which check fails first, and what closes it. These are engine outputs for the start preset at build time. The app itself always reads live metrics.</p>
+  </div>
+
+  <h3>One model, seven scales</h3>
+  <p>The scales run from the chip up to off-world. Module 1 is the Business module: Earth fleet, site and off-world. Module 2 is the Engineering module: chip, rack, hall and building. Picking an object zooms one step finer. Pressing zoom out, or tapping the parent in the breadcrumb, moves one step coarser. Off-world sites skip the building and the hall and go straight from site to rack.</p>
+  <figure class="fig">
+    <img src="fig/ladder.svg" alt="Seven stacked levels from off-world at the top to the chip at the bottom, with what each shows and what you pick to go finer. A dashed shortcut runs from site straight to rack for off-world sites.">
+    <figcaption>The zoom ladder. Coarsest at the top. The dashed arrow is the off-world shortcut. Geometry at every scale is schematic, not to scale.</figcaption>
+  </figure>
+
+  <h3>How it is wired</h3>
+  <p>The engine is a pure function, meaning its output depends only on its input. It takes a scenario and returns one metrics object. It has no page code and no 3D code. The catalog and the sources list sit beside it, and every input number carries a source id. Every level module follows the same small interface, so panels, lenses and picking need no per-level wiring: it builds a 3D group, restyles it when the numbers or the lens change, lists what can be picked, and returns a legend, a readout and one caption sentence. A new level only needs an entry in the level list (<code>LEVELS</code> in <code>src/contract.js</code>, plus its loader in <code>LEVEL_LOADERS</code> in <code>src/main.js</code>) and in the zoom-out chain (<code>parentOf</code> in <code>src/main.js</code> and the matching breadcrumb path).</p>
+  <figure class="fig">
+    <img src="fig/architecture.svg" alt="Catalog data and a scenario feed one engine. The engine produces one metrics object. Seven level modules, the control panels, the business panel and the Vision Pro mode redraw from it. The app API sends every slider, preset and pick back as a new scenario.">
+    <figcaption>Scenario in, metrics out. File names are in the repository. The app API is the only way a view changes the scenario.</figcaption>
+  </figure>
+
+  <h3>What the engine computes</h3>
+  <p>Each line below is a formula in words, with its source. Slide numbers win over every other source. The Terawatt app engine (the Terawatt visionOS app) fills gaps where the slides are silent.</p>
+  <ul>
+    <li><strong>Demand.</strong> Peak tokens per second equal users times peak tokens per second per user, split into interactive and background work (<span class="src">d.demand</span>). The peak hour runs <span class="num" data-src="s17.peak">2x</span> for chat, <span class="num" data-src="s17.peak">2.5x</span> for agents and <span class="num" data-src="s17.peak">1x</span> for background work. A token is a small piece of text the model reads or writes.</li>
+    <li><strong>Rack capacity.</strong> Chips per rack times tokens per second per chip (<span class="src">d.capacity</span>). One 2035 GPU decodes about <span class="num" data-src="s14.decode">58,000 tok/s</span> of chat or <span class="num" data-src="s14.decode">11,700 tok/s</span> of agent work. Prefill (reading the prompt) and decode (writing the answer) are two pools of racks.</li>
+    <li><strong>Racks needed.</strong> The smallest rack count whose capacity covers peak demand (<span class="src">d.capacity</span>).</li>
+    <li><strong>Facility power.</strong> IT power (the power the computing equipment draws) times PUE (<span class="src">d.facility</span>). PUE, power usage effectiveness, is facility power divided by IT power. It equals 1 plus the cooling overhead plus <span class="num" data-src="s15.pue">0.04</span> (<span class="src">s15.pue</span>), and it moves between a cold-climate and a desert-climate column with the site's temperature (<span class="src">a.climate</span>).</li>
+    <li><strong>Water.</strong> Facility energy times <span class="num" data-src="s15.water">1.8 L per kWh</span>, for evaporative cooling only (<span class="src">d.water</span>).</li>
+    <li><strong>Five-year cost.</strong> Racks plus buildings plus energy over <span class="num" data-src="spec.hours">43,800 hours</span> plus carbon plus launches (<span class="src">d.cost5yr</span>). Carbon is priced at <span class="num" data-src="s15.carbon">$100 per tonne</span>. Buildings use <span class="num" data-src="ext.cw_build">$17.6M per MW</span>; the Terawatt app engine uses <span class="num" data-src="tw.building">$11M per MW</span>, and a slider covers both.</li>
+    <li><strong>Launch and radiators.</strong> Launch cost equals IT MW times <span class="num" data-src="s15.orbit">18 t</span> per MW times dollars per kilogram times a multiplier of <span class="num" data-src="s15.orbit">1</span> for low Earth orbit, <span class="num" data-src="s15.orbit">6</span> for the Moon and <span class="num" data-src="s15.orbit">15</span> for Mars (<span class="src">d.launch</span>). Radiator area is IT MW times <span class="num" data-src="s15.orbit">1,080 m2</span> (<span class="src">d.radiator</span>).</li>
+    <li><strong>Joules per output token.</strong> Facility watts divided by decode tokens per second served (<span class="src">d.jtoken</span>). The challenge frames the goal as joules per task (<span class="src">s22.framing</span>), and this is the per-token view of the same idea.</li>
+    <li><strong>Money.</strong> NPV (net present value: future cash flows discounted to today), IRR (internal rate of return: the discount rate at which NPV is zero) and payback (years until cash flow turns positive) come from year-0 capex (up-front spending on racks, buildings and launches) and five years of revenue minus opex (running cost) (<span class="src">d.finance</span>). The discount rate is <span class="num" data-src="a.discount">10%</span> a year, an assumption.</li>
+    <li><strong>Break-even price.</strong> The flat monthly price per user that makes five-year NPV zero: (opex plus capex divided by an annuity factor, which turns five equal yearly payments into one sum today), divided by users served, divided by twelve (<span class="src">a.breakeven</span>). It needs no guess about 2035 prices.</li>
+    <li><strong>Chip heat flux.</strong> Compute watts divided by compute die area (<span class="src">d.heatflux</span>). Compute watts are the chip's power minus the power of its HBM (high-bandwidth memory) stacks, and the die sizes come from <span class="src">s28.dies</span>. A die is one slice of silicon cut from a wafer.</li>
+  </ul>
+
+  <div class="grid-2">
+    <div class="kpi"><b><span class="num" data-src="a.breakeven">$34.45</span></b><span>break-even per user per month, start preset (engine output at build time)</span></div>
+    <div class="kpi"><b><span class="num" data-src="ext.sub_price">$20</span> and from <span class="num" data-src="ext.sub_price">$100</span></b><span>today's consumer plans: Plus and Pro, then Max and Pro</span></div>
+  </div>
+
+  <h3>Lenses</h3>
+  <p>A lens recolours every object at the current scale. The camera does not move. Five lenses exist, and each one is defined at every scale, or says so when it does not apply.</p>
+  <ul>
+    <li><strong>Heat.</strong> On the fleet, each site's PUE. On a chip, heat flux per square centimetre (colouring the dies and the HBM, the high-bandwidth memory stacked beside them) on a display scale that runs to <span class="num" data-src="a.heat_scale">1,500 W/cm2</span>. That scale is only a display range, not a limit.</li>
+    <li><strong>Power.</strong> Facility MW per site. At rack scale, rack kW.</li>
+    <li><strong>Cost.</strong> Energy price per MWh per site, and rack cost at rack scale.</li>
+    <li><strong>Sentiment.</strong> The stance of one recent local news article per site (<span class="src">ext.sentiment</span>). It is a sample, not a poll. At rack and chip scale it reads "n/a at this scale".</li>
+    <li><strong>Water.</strong> Water use per site, and cooling litres per kWh at rack scale (<span class="src">d.water</span>).</li>
+  </ul>
+
+  <h3>Six checks, in a fixed order</h3>
+  <p>Six constraint checks run on every change: Grid, Budget, Serving, Cooling fit, Latency and Water. A banner shows the first failing check in red, with its message. Tapping it moves the view to the level named in the check's cause, so a failing check always leads to where it can be understood. The Water check uses a simple rule: it fails when evaporative cooling runs at a desert-climate site (<span class="src">a.water_rule</span>). That rule is an assumption, and the sources list says why.</p>
+  <figure class="fig">
+    <img src="fig/constraints.svg" alt="Six checks in order: grid, budget, serving, cooling fit, latency, water. Grid is amber, near its limit at 499 of 500 MW, budget passes, and serving fails first. Cooling fit, latency and water show as pills only. The banner expands only serving, and tapping it zooms to a decode rack.">
+    <figcaption>The checks in the order the banner reads them. The pictured state is the start preset, where Serving is the first failure.</figcaption>
+  </figure>
+
+  <h3>The year slider</h3>
+  <p>The slider swaps in each year's rack catalog, from 2025 to 2035, and keeps the current rack counts. Only a preset or the Size to demand button re-sizes the fleet to the demand. In 2025 the GPU rack is the GB200 NVL72, with <span class="num" data-src="s8.rack_kw">132 kW</span> and <span class="num" data-src="s12.racks">72 GPUs</span>. In 2035 it is <span class="num" data-src="s12.racks">792 kW</span> and <span class="num" data-src="s12.racks">144 chips</span>. Between the anchors, rack power and chip count are interpolated geometrically (steady percentage steps) so that a hotter rack is never less efficient per watt than an older one (<span class="src">a.year</span>). LPU racks (chips with very fast but small memory, see <span class="src">s14.memory</span>) and air-card racks enter the catalog in <span class="num" data-src="a.new_racks">2030</span>; before that the view says they are not yet available. A line chart in the business panel does re-size the same demand for each year, and shows racks needed and energy per output token (<span class="src">d.projection</span>).</p>
+
+  <h3>Presets as a guided tour</h3>
+  <p>A preset is a saved scenario. The Tour button plays a nine-step story of about a minute, built from live numbers. It opens on the Earth fleet with the start preset (fit-grid), then zooms to a site, a hall, a rack and a chip. It then applies Decode on LPUs (lpu-decode) and LPUs with overflow to orbit (lpu-orbit), returns to the fleet to read the break-even price, and ends on the same demand on 2025 racks (today-2025). The whole argument can be shown without touching a slider. The tour does not use All of Case B on Earth (challenge-b) or the three other presets, which stay in the scenario panel, and it returns to the start preset when it ends.</p>
+  <table class="presets">
+    <thead>
+      <tr><th>Preset</th><th>Racks</th><th>Earth facility</th><th>Off-world IT</th><th>5-year cost</th><th>Served</th><th>J per output token</th><th>Break-even per user per month</th><th>First failing</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Start (fit-grid)</td><td><span class="num" data-src="d.capacity">575</span></td><td><span class="num" data-src="d.facility">499 MW</span></td><td><span class="num" data-src="d.placement">0 MW</span></td><td><span class="num" data-src="d.cost5yr">$23.6B</span></td><td><span class="num" data-src="d.capacity">32%</span></td><td><span class="num" data-src="d.jtoken">1.12</span></td><td><span class="num" data-src="a.breakeven">$34.45</span></td><td>Serving</td></tr>
+      <tr><td>Decode on LPUs (lpu-decode)</td><td><span class="num" data-src="d.capacity">635</span></td><td><span class="num" data-src="d.facility">499 MW</span></td><td><span class="num" data-src="d.placement">0 MW</span></td><td><span class="num" data-src="d.cost5yr">$23.3B</span></td><td><span class="num" data-src="d.capacity">48%</span></td><td><span class="num" data-src="d.jtoken">0.75</span></td><td><span class="num" data-src="a.breakeven">$22.91</span></td><td>Serving</td></tr>
+      <tr><td>LPUs, overflow to orbit (lpu-orbit)</td><td><span class="num" data-src="d.capacity">1,327</span></td><td><span class="num" data-src="d.facility">496 MW</span></td><td><span class="num" data-src="d.placement">499 MW</span></td><td><span class="num" data-src="d.cost5yr">$39.7B</span></td><td><span class="num" data-src="d.capacity">97%</span></td><td><span class="num" data-src="d.jtoken">0.73</span></td><td><span class="num" data-src="a.breakeven">$19.66</span></td><td>Budget</td></tr>
+      <tr><td>All of Case B on Earth (challenge-b)</td><td><span class="num" data-src="d.capacity">1,790</span></td><td><span class="num" data-src="d.facility">1,554 MW</span></td><td><span class="num" data-src="d.placement">0 MW</span></td><td><span class="num" data-src="d.cost5yr">$73.3B</span></td><td><span class="num" data-src="d.capacity">100%</span></td><td><span class="num" data-src="d.jtoken">1.12</span></td><td><span class="num" data-src="a.breakeven">$34.47</span></td><td>Grid</td></tr>
+      <tr><td>Same demand on 2025 racks (today-2025)</td><td><span class="num" data-src="d.capacity">27,651</span></td><td><span class="num" data-src="d.facility">4,001 MW</span></td><td><span class="num" data-src="d.placement">0 MW</span></td><td><span class="num" data-src="d.cost5yr">$189.7B</span></td><td><span class="num" data-src="d.capacity">100%</span></td><td><span class="num" data-src="d.jtoken">2.88</span></td><td><span class="num" data-src="a.breakeven">$89.20</span></td><td>Grid</td></tr>
+    </tbody>
+  </table>
+  <p class="schematic-note">Engine output for Case B at build time. These rows show shape and scale. Served is the share of peak demand served. Each cell cites the formula that produced it, and the app always reads live metrics rather than this table.</p>
+  <p>Read the table top to bottom. Fitting Case B into the grid serves a third of demand. Moving decode to LPUs helps. Orbit nearly closes the serving gap (<span class="num" data-src="d.capacity">97%</span>) but breaks the budget. Putting everything on Earth breaks the grid. Using 2025 racks for the same demand breaks it far worse.</p>
+
+  <h3>Apple Vision Pro</h3>
+  <p>The same scene runs in WebXR, the browser standard for headset and passthrough experiences. In Safari on Vision Pro, the Enter VR button starts a session. The table appears in front of the viewer at desk height. A pinch on an object zooms in, using the same pick code as the desktop pointer. A floating panel behind the table switches lens, year and preset, and has zoom out and a life-size toggle that scales the hall so racks read near real size. By design, every XR call sits behind a feature check. Where WebXR is missing, the page shows a note to open it on Vision Pro, and everything else still works.</p>
+
+  <h3>Source discipline</h3>
+  <p>Every number a viewer can see comes from the engine metrics, the catalog or the sources list, and every number in the panels names its source with an "i" badge. Tapping the badge names the source: a slide, the technical spec, the Terawatt app engine, a published page with a link, a formula, or an assumption with its reason. Where a published page was used, it was checked against the raw page. The app makes no requests to other origins and loads no outside library.</p>
+  <p>Known AI campuses appear as markers on the Earth fleet. The Cleanview US totals count data centers with reported capacity: <span class="num" data-src="cv.map">1,372</span> operating and <span class="num" data-src="cv.map">2,689</span> planned, shown as "US operating (with MW)" and "US planned (with MW)". They are credited with a link to <a href="https://cleanview.co/data-centers/us">Cleanview US Data Center Map</a>. The individual Cleanview markers stay in a local checkout and are not drawn in the public build because of the data licence.</p>
+  <p>The copy rules are checked too: no shipped text file outside vendor/ contains an em-dash, and every readout row names a source id that exists (AC13).</p>
+
+  <h3>Acceptance criteria</h3>
+  <p>These fourteen criteria are the contract. QA tests them, and this page quotes them as written.</p>
+<pre class="gherkin">AC1  Zoom in
+  Given the Earth fleet level
+  When I pick the West Texas site
+  Then the view shows the West Texas site and the breadcrumb reads "Earth fleet / West Texas"
+
+AC2  Zoom out
+  Given any level other than off-world
+  When I press zoom out or tap the parent in the breadcrumb
+  Then the view moves one level coarser
+
+AC3  Off-world path
+  Given the off-world level
+  When I pick low Earth orbit
+  Then the site level shows the orbital site, and picking it goes straight to a rack (no building or hall)
+
+AC4  Lenses
+  Given any level
+  When I switch the lens to Power
+  Then objects recolour, the level card legend shows the power scale, and the camera does not move
+
+AC5  Year slider
+  Given the start preset
+  When I move the year to 2025
+  Then the GPU rack becomes the GB200 NVL72 (132 kW, 72 GPUs) and energy per output token rises
+
+AC6  First failing check
+  Given the start preset (Case B in 500 MW)
+  Then the constraint banner shows Serving as the first failing check
+  When I tap it
+  Then the view goes to the level named in its cause
+
+AC7  Grid binds
+  Given the preset "All of Case B on Earth"
+  Then the Grid check fails because Earth facility power is above the 500 MW cap
+
+AC8  Every number has a source
+  Given any number in the level card, business panel or scenario panel
+  When I tap its "i" badge
+  Then a popover names its source: a slide, the spec, the Terawatt app engine, a published page with a link, a formula, or an assumption with its reason
+
+AC9  Business case
+  Given the Earth fleet level
+  Then the business panel shows NPV, IRR, payback, the break-even price per user per month beside reference plan prices, and a money-flow chart
+  When I change the subscription price
+  Then NPV and IRR update
+
+AC10 Projection
+  Given the business panel
+  Then a 2025 to 2035 chart shows racks and energy per output token for the same demand
+
+AC11 Existing data centers
+  Given the Earth fleet level
+  Then known AI campuses (for example Stargate Abilene, 1.2 GW planned) appear as markers with sources
+  And the Cleanview US totals (1,372 operating, 2,689 planned) are credited with a link
+
+AC12 Vision Pro
+  Given Safari on Apple Vision Pro
+  When I tap Enter VR
+  Then the table appears in front of me at desk height, a pinch on an object zooms in, and an in-world panel switches lens, year and preset
+
+AC13 Copy hygiene
+  Given the repository
+  Then no file contains an em-dash, and every readout row names a source id that exists
+
+AC14 Chip workbench
+  Given the chip level
+  When I add compute dies or HBM stacks
+  Then chip power and heat flux update and the heat lens recolours the dies</pre>
+
+  <h3>Story map and release slices</h3>
+  <p>The map follows one persona journey, left to right: set the scene, pick a place, check it works, look inside and make the case. Cards under each activity are cut into two release slices. The first slice is what ships for the demo at 20:00 on 18 Oct 2026. The second, Next, lists known gaps. Each gap points to a source id that records why it is open.</p>
+  <figure class="fig">
+    <img src="fig/story-map.svg" alt="Five activities across the top. A first release slice lists the cards built for the demo, each with its acceptance criteria ids. A second slice lists four known gaps and ideas.">
+    <figcaption>Story map. Solid cards are built and tied to acceptance criteria. Dashed cards are not built.</figcaption>
+  </figure>
+
+  <h3>Watch the zoom</h3>
+  <p>A short looping animation shows the whole argument: chip, rack, hall, building, site, fleet, then a power gauge that overflows, compute that lifts to orbit, and the break-even price. It honours reduced-motion settings with a static storyboard. <a href="motion/index.html">Open the motion explainer</a>.</p>
+</section>

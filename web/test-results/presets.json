@@ -1,0 +1,840 @@
+[
+ {
+  "id": "fit-grid",
+  "label": "Start: Case B in 500 MW of grid",
+  "year": 2035,
+  "racks": 575,
+  "prefillRacks": 310,
+  "decodeRacks": 265,
+  "chips": 82800,
+  "itMW": 455.4,
+  "earthFacilityMW": 499.19759999999997,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 23554832996.12288,
+  "budgetUSD": 30000000000,
+  "servedShare": 0.3214080000000001,
+  "servedInteractive": 0.6428160000000002,
+  "servedBackground": 0,
+  "usersServed": 16070400.000000004,
+  "users": 50000000,
+  "jPerOutputToken": 1.1182741935483866,
+  "pueBlended": 1.0961739130434782,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 1208229.02716032,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": -10560671299.72863,
+  "irr": -0.11733783492119987,
+  "irrLabel": "-11.7%",
+  "paybackYears": null,
+  "breakevenUSDPerUserMonth": 34.44622040298612,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": true,
+    "severity": "warn",
+    "msg": "Earth sites draw 499 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": true,
+    "severity": "ok",
+    "msg": "5-year cost $23.6B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Serves 64% of interactive and 0% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "serving",
+   "msg": "Serves 64% of interactive and 0% of background demand at peak",
+   "cause": {
+    "level": "rack",
+    "focus": {
+     "site": "wtx",
+     "rack": "decode"
+    }
+   }
+  }
+ },
+ {
+  "id": "lpu-decode",
+  "label": "Decode on LPUs, still 500 MW",
+  "year": 2035,
+  "racks": 635,
+  "prefillRacks": 462,
+  "decodeRacks": 173,
+  "chips": 110816,
+  "itMW": 455.17199999999997,
+  "earthFacilityMW": 498.95973000000004,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 23334600131.707947,
+  "budgetUSD": 30000000000,
+  "servedShare": 0.4783104,
+  "servedInteractive": 0.9566208,
+  "servedBackground": 0,
+  "usersServed": 23915520,
+  "users": 50000000,
+  "jPerOutputToken": 0.751083408598266,
+  "pueBlended": 1.0962004033640032,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 1208178.6383022298,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": -3170533491.5436983,
+  "irr": 0.040370366820716236,
+  "irrLabel": "4.0%",
+  "paybackYears": 4.447194226619065,
+  "breakevenUSDPerUserMonth": 22.914351391357968,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": true,
+    "severity": "warn",
+    "msg": "Earth sites draw 499 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": true,
+    "severity": "ok",
+    "msg": "5-year cost $23.3B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Serves 96% of interactive and 0% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "serving",
+   "msg": "Serves 96% of interactive and 0% of background demand at peak",
+   "cause": {
+    "level": "rack",
+    "focus": {
+     "site": "wtx",
+     "rack": "decode"
+    }
+   }
+  }
+ },
+ {
+  "id": "lpu-orbit",
+  "label": "LPUs on Earth, overflow to orbit",
+  "year": 2035,
+  "racks": 1327,
+  "prefillRacks": 965,
+  "decodeRacks": 362,
+  "chips": 231632,
+  "itMW": 951.072,
+  "earthFacilityMW": 495.82696724999994,
+  "gridCapMW": 500,
+  "offworldITMW": 498.516,
+  "cost5yrUSD": 39734611946.23721,
+  "budgetUSD": 30000000000,
+  "servedShare": 0.9743328000000003,
+  "servedInteractive": 1,
+  "servedBackground": 0.9486656000000006,
+  "usersServed": 48716640.000000015,
+  "users": 50000000,
+  "jPerOutputToken": 0.7347868576527442,
+  "pueBlended": 1.045497046753558,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 1185160.17645774,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": 762690303.3184719,
+  "irr": 0.10784577740007076,
+  "irrLabel": "10.8%",
+  "paybackYears": 3.7160130332272776,
+  "breakevenUSDPerUserMonth": 19.655840077363706,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": true,
+    "severity": "warn",
+    "msg": "Earth sites draw 496 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $39.7B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Serves 100% of interactive and 95% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "budget",
+   "msg": "5-year cost $39.7B against a $30B budget",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ },
+ {
+  "id": "challenge-b",
+  "label": "All of Case B on Earth (grid fails)",
+  "year": 2035,
+  "racks": 1790,
+  "prefillRacks": 965,
+  "decodeRacks": 825,
+  "chips": 257760,
+  "itMW": 1417.6799999999998,
+  "earthFacilityMW": 1553.9931,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 73326687669.15646,
+  "budgetUSD": 30000000000,
+  "servedShare": 1,
+  "servedInteractive": 1,
+  "servedBackground": 1,
+  "usersServed": 50000000,
+  "users": 50000000,
+  "jPerOutputToken": 1.118875032,
+  "pueBlended": 1.0961522346368715,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 3759856.105640579,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": -32900767080.063732,
+  "irr": -0.11753330584178917,
+  "irrLabel": "-11.8%",
+  "paybackYears": null,
+  "breakevenUSDPerUserMonth": 34.46523245322582,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Earth sites draw 1554 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $73.3B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Serves 100% of interactive and 100% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "grid",
+   "msg": "Earth sites draw 1554 MW against a 500 MW grid cap",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ },
+ {
+  "id": "orbit",
+  "label": "All of Case B, GPUs, overflow to orbit",
+  "year": 2035,
+  "racks": 1790,
+  "prefillRacks": 965,
+  "decodeRacks": 825,
+  "chips": 257760,
+  "itMW": 1417.68,
+  "earthFacilityMW": 494.6627565,
+  "gridCapMW": 500,
+  "offworldITMW": 966.24,
+  "cost5yrUSD": 55856000102.027626,
+  "budgetUSD": 30000000000,
+  "servedShare": 0.9664012800000004,
+  "servedInteractive": 1,
+  "servedBackground": 0.9328025600000006,
+  "usersServed": 48320064.000000015,
+  "users": 50000000,
+  "jPerOutputToken": 1.0884194862407466,
+  "pueBlended": 1.030488372905028,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 1186717.7022327003,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": -17912131285.221306,
+  "irr": -0.04055863402260007,
+  "irrLabel": "-4.1%",
+  "paybackYears": null,
+  "breakevenUSDPerUserMonth": 28.14909087024753,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": true,
+    "severity": "warn",
+    "msg": "Earth sites draw 495 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $55.9B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Serves 100% of interactive and 93% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "budget",
+   "msg": "5-year cost $55.9B against a $30B budget",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ },
+ {
+  "id": "today-2025",
+  "label": "Same demand on 2025 racks",
+  "year": 2025,
+  "racks": 27651,
+  "prefillRacks": 11575,
+  "decodeRacks": 16076,
+  "chips": 1990872,
+  "itMW": 3649.932,
+  "earthFacilityMW": 4001.25528,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 189713668929.15503,
+  "budgetUSD": 30000000000,
+  "servedShare": 1,
+  "servedInteractive": 1,
+  "servedBackground": 1,
+  "usersServed": 50000000,
+  "users": 50000000,
+  "jPerOutputToken": 2.8809038016,
+  "pueBlended": 1.0962547466637735,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 9697261.51522656,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": -157398865371.99078,
+  "irr": -0.436367307738983,
+  "irrLabel": "-43.6%",
+  "paybackYears": null,
+  "breakevenUSDPerUserMonth": 89.20237360847072,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Earth sites draw 4001 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $189.7B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Serves 100% of interactive and 100% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "grid",
+   "msg": "Earth sites draw 4001 MW against a 500 MW grid cap",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ },
+ {
+  "id": "case-a",
+  "label": "Case A: 4B prompters",
+  "year": 2035,
+  "racks": 2452,
+  "prefillRacks": 1287,
+  "decodeRacks": 1165,
+  "chips": 353088,
+  "itMW": 1941.984,
+  "earthFacilityMW": 2128.8306599999996,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 100447357950.21877,
+  "budgetUSD": 30000000000,
+  "servedShare": 1,
+  "servedInteractive": 1,
+  "servedBackground": 1,
+  "usersServed": 4000000000,
+  "users": 4000000000,
+  "jPerOutputToken": 0.2189654393142857,
+  "pueBlended": 1.0962143148450243,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 5155917.12080478,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": 3531772270332.756,
+  "irr": null,
+  "irrLabel": "above 1,000%",
+  "paybackYears": 0.09678706481312101,
+  "breakevenUSDPerUserMonth": 0.5901535905308405,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Earth sites draw 2129 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $100.4B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Serves 100% of interactive and 100% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "grid",
+   "msg": "Earth sites draw 2129 MW against a 500 MW grid cap",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ },
+ {
+  "id": "case-c",
+  "label": "Case C: 400M knowledge workers",
+  "year": 2035,
+  "racks": 1715,
+  "prefillRacks": 922,
+  "decodeRacks": 793,
+  "chips": 246960,
+  "itMW": 1358.28,
+  "earthFacilityMW": 1488.9798,
+  "gridCapMW": 500,
+  "offworldITMW": 0,
+  "cost5yrUSD": 70256037936.28358,
+  "budgetUSD": 30000000000,
+  "servedShare": 1,
+  "servedInteractive": 1,
+  "servedBackground": 1,
+  "usersServed": 400000000,
+  "users": 400000000,
+  "jPerOutputToken": 0.804049092,
+  "pueBlended": 1.0962244897959184,
+  "waterMLPerYear": 0,
+  "carbonTPerYear": 3606833.73975012,
+  "revenueModel": "subscription",
+  "usdPerUserMonth": 20,
+  "npvUSD": 288808540501.03314,
+  "irr": 1.4236973566748201,
+  "irrLabel": "142.4%",
+  "paybackYears": 0.693998191511325,
+  "breakevenUSDPerUserMonth": 4.127715538295883,
+  "checks": [
+   {
+    "id": "grid",
+    "ok": false,
+    "severity": "fail",
+    "msg": "Earth sites draw 1489 MW against a 500 MW grid cap",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "budget",
+    "ok": false,
+    "severity": "fail",
+    "msg": "5-year cost $70.3B against a $30B budget",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "serving",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Serves 100% of interactive and 100% of background demand at peak",
+    "cause": {
+     "level": "rack",
+     "focus": {
+      "site": "wtx",
+      "rack": "decode"
+     }
+    }
+   },
+   {
+    "id": "cooling",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Every rack suits its hall cooling",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   },
+   {
+    "id": "latency",
+    "ok": true,
+    "severity": "ok",
+    "msg": "Interactive work runs within 110 ms round trip; Moon and Mars take background work only",
+    "cause": {
+     "level": "offworld",
+     "focus": {}
+    }
+   },
+   {
+    "id": "water",
+    "ok": true,
+    "severity": "ok",
+    "msg": "0 ML of water a year",
+    "cause": {
+     "level": "fleet",
+     "focus": {}
+    }
+   }
+  ],
+  "firstFailing": {
+   "id": "grid",
+   "msg": "Earth sites draw 1489 MW against a 500 MW grid cap",
+   "cause": {
+    "level": "fleet",
+    "focus": {}
+   }
+  }
+ }
+]

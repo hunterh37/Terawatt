@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="eli5-1-title eli5-1-desc">
+  <title id="eli5-1-title">What a token costs in energy</title>
+  <desc id="eli5-1-desc">Electricity goes into a data center and chunks of text called tokens come out; joules per token is facility watts divided by tokens per second, and 2035 racks need fewer joules per token than 2025 racks.</desc>
+  <defs>
+    <marker id="eli5-1-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8a96aa"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0b0f17"/>
+
+  <text x="48" y="48" fill="#e8edf5" font-size="24" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">What does one token cost in energy?</text>
+  <text x="48" y="80" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">A token is a small chunk of text, about a short word. The AI writes its answer one token at a time.</text>
+
+  <!-- arrows first -->
+  <line x1="248" y1="198" x2="324" y2="198" stroke="#8a96aa" stroke-width="2" marker-end="url(#eli5-1-arrow)"/>
+  <line x1="632" y1="198" x2="708" y2="198" stroke="#8a96aa" stroke-width="2" marker-end="url(#eli5-1-arrow)"/>
+
+  <!-- box A: electricity -->
+  <rect x="48" y="128" width="200" height="140" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#ffd34d" stroke-width="1.2"/>
+  <polygon points="156,140 132,176 150,176 140,200 168,160 150,160" fill="#ffd34d"/>
+  <text x="148" y="228" text-anchor="middle" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Electricity</text>
+  <text x="148" y="252" text-anchor="middle" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">counted in joules (J)</text>
+
+  <!-- box B: data center -->
+  <rect x="328" y="128" width="304" height="140" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#5ad1ff" stroke-width="1.2"/>
+  <rect x="420" y="140" width="32" height="64" rx="4" fill="#0b0f17" stroke="#ffa94d" stroke-width="1.2"/>
+  <rect x="464" y="140" width="32" height="64" rx="4" fill="#0b0f17" stroke="#ffa94d" stroke-width="1.2"/>
+  <rect x="508" y="140" width="32" height="64" rx="4" fill="#0b0f17" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="426" y1="156" x2="446" y2="156" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="426" y1="172" x2="446" y2="172" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="426" y1="188" x2="446" y2="188" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="470" y1="156" x2="490" y2="156" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="470" y1="172" x2="490" y2="172" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="470" y1="188" x2="490" y2="188" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="514" y1="156" x2="534" y2="156" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="514" y1="172" x2="534" y2="172" stroke="#ffa94d" stroke-width="1.2"/>
+  <line x1="514" y1="188" x2="534" y2="188" stroke="#ffa94d" stroke-width="1.2"/>
+  <text x="480" y="228" text-anchor="middle" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The data center</text>
+  <text x="480" y="252" text-anchor="middle" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">racks, cooling, lights</text>
+
+  <!-- box C: tokens -->
+  <rect x="712" y="128" width="200" height="140" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#3ddc97" stroke-width="1.2"/>
+  <rect x="724" y="140" width="48" height="28" rx="4" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1"/>
+  <text x="748" y="160" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The</text>
+  <rect x="776" y="140" width="56" height="28" rx="4" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1"/>
+  <text x="804" y="160" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">rack</text>
+  <rect x="836" y="140" width="40" height="28" rx="4" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1"/>
+  <text x="856" y="160" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">is</text>
+  <rect x="724" y="172" width="56" height="28" rx="4" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1"/>
+  <text x="752" y="192" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">very</text>
+  <rect x="784" y="172" width="48" height="28" rx="4" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1"/>
+  <text x="808" y="192" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">hot</text>
+  <text x="812" y="228" text-anchor="middle" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Tokens</text>
+  <text x="812" y="252" text-anchor="middle" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">chunks of text</text>
+
+  <!-- formula strip -->
+  <rect x="48" y="292" width="864" height="88" rx="8" fill="#5ad1ff" fill-opacity="0.06" stroke="#5ad1ff" stroke-width="1.2"/>
+  <text x="480" y="326" text-anchor="middle" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Joules per token = facility watts / tokens per second</text>
+  <text x="480" y="358" text-anchor="middle" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">A watt is one joule every second, so this leaves joules for each token (d.jtoken).</text>
+
+  <!-- bars -->
+  <text x="48" y="412" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Same job, two eras of racks</text>
+  <text x="48" y="444" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">2025 racks</text>
+  <rect x="216" y="424" width="288" height="28" rx="4" fill="#ffb547"/>
+  <text x="516" y="444" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">2.88 J per token (today-2025 preset)</text>
+  <text x="48" y="484" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">2035 racks</text>
+  <rect x="216" y="464" width="112" height="28" rx="4" fill="#3ddc97"/>
+  <text x="340" y="484" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">1.12 J per token (start preset)</text>
+
+  <text x="48" y="520" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Engine outputs for two presets; live values change with the sliders. Bars are schematic. Sources: d.jtoken, s12.racks.</text>
+</svg>

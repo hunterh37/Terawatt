@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="eli5-3-title eli5-3-desc">
+  <title id="eli5-3-title">The grid runs out, so compute goes to orbit</title>
+  <desc id="eli5-3-desc">A bar shows that Case B needs about 1.4 GW of IT power, far above the 500 MW Earth grid cap; the part that does not fit moves to low Earth orbit, which has no grid cap but needs launches and radiators.</desc>
+  <defs>
+    <marker id="eli5-3-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ff5c6c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0b0f17"/>
+
+  <text x="48" y="44" fill="#e8edf5" font-size="24" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The grid runs out, so compute goes up</text>
+  <text x="48" y="72" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Orbit has no grid cap. It costs launch money and needs big radiators to shed heat.</text>
+
+  <text x="48" y="112" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Case B with 2035 GPU racks needs about 1.4 GW of IT power (d.capacity)</text>
+
+  <!-- arrow first -->
+  <line x1="618" y1="180" x2="618" y2="296" stroke="#ff5c6c" stroke-width="2" marker-end="url(#eli5-3-arrow)"/>
+  <text x="634" y="244" fill="#ff5c6c" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">the rest goes up</text>
+
+  <!-- bar: green part fits, red part does not -->
+  <rect x="48" y="128" width="300" height="48" fill="#3ddc97"/>
+  <rect x="348" y="128" width="540" height="48" fill="#ff5c6c"/>
+  <text x="198" y="158" text-anchor="middle" fill="#0b0f17" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">fits on Earth</text>
+  <text x="618" y="158" text-anchor="middle" fill="#0b0f17" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">does not fit on Earth</text>
+  <line x1="348" y1="176" x2="348" y2="190" stroke="#e8edf5" stroke-width="1.2"/>
+  <text x="348" y="212" text-anchor="middle" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Earth grid cap: 500 MW (s9.setting)</text>
+
+  <!-- Earth box -->
+  <rect x="48" y="300" width="332" height="160" rx="8" fill="#e8edf5" fill-opacity="0.04" stroke="#8a96aa" stroke-width="1.2"/>
+  <circle cx="340" cy="332" r="16" fill="none" stroke="#4fb3ff" stroke-width="1.5"/>
+  <ellipse cx="340" cy="332" rx="7" ry="16" fill="none" stroke="#4fb3ff" stroke-width="1"/>
+  <line x1="324" y1="332" x2="356" y2="332" stroke="#4fb3ff" stroke-width="1"/>
+  <text x="64" y="338" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Earth: six sites</text>
+  <text x="64" y="372" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Six sites share one grid.</text>
+  <text x="64" y="400" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Grid cap: 500 MW (s9.setting)</text>
+  <text x="64" y="428" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Round trip 25 to 110 ms (s13.rtt)</text>
+
+  <!-- Orbit box -->
+  <rect x="408" y="300" width="504" height="160" rx="8" fill="#5ad1ff" fill-opacity="0.05" stroke="#5ad1ff" stroke-width="1.5"/>
+  <rect x="424" y="368" width="20" height="16" fill="#ffd34d"/>
+  <rect x="448" y="360" width="32" height="32" rx="4" fill="#0b0f17" stroke="#5ad1ff" stroke-width="1.5"/>
+  <rect x="484" y="368" width="20" height="16" fill="#ffd34d"/>
+  <rect x="448" y="396" width="32" height="20" fill="#8a96aa" fill-opacity="0.5" stroke="#8a96aa" stroke-width="1"/>
+  <text x="540" y="332" fill="#e8edf5" font-size="20" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Low Earth orbit</text>
+  <text x="540" y="364" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">No grid cap, radiators only (s15.orbit)</text>
+  <text x="540" y="392" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Round trip 40 ms: chat works (s13.rtt)</text>
+  <text x="540" y="420" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Launch at $200/kg (s9.setting)</text>
+
+  <text x="48" y="492" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The Moon is 2.6 s away (s13.rtt), too slow for chat (s13.slo). It can take background work only.</text>
+  <text x="48" y="520" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Schematic. The bar compares IT power with the grid cap and ignores cooling overhead. Bar widths follow the numbers.</text>
+</svg>

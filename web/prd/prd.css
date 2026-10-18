@@ -1,0 +1,48 @@
+/* PRD page. Builds on styles/base.css tokens; the app layout rules are reset for a scrolling document. */
+body.prd { overflow: auto; background: var(--bg); }
+.prd-head, .prd-main, .prd-foot { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+.prd-head { padding-top: 48px; padding-bottom: 8px; }
+.prd-head h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.05; margin: 6px 0 12px; letter-spacing: -0.02em; }
+.eyebrow { color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin: 0; }
+.sub { font-size: 18px; color: var(--ink); max-width: 760px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.actions .btn { text-decoration: none; color: var(--ink); padding: 9px 16px; }
+.actions .btn.primary { color: #04121c; }
+.credit { color: var(--dim); font-size: 13px; }
+.toc { position: sticky; top: 0; z-index: 3; display: flex; gap: 6px; flex-wrap: wrap; padding: 10px 0; background: linear-gradient(var(--bg) 80%, transparent); }
+.toc a { color: var(--dim); text-decoration: none; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; }
+.toc a:hover { color: var(--ink); border-color: var(--accent); }
+
+.prd-main section { padding: 28px 0 8px; border-top: 1px solid var(--line); margin-top: 28px; }
+.prd-main h2 { font-size: 28px; margin: 0 0 10px; letter-spacing: -0.01em; }
+.prd-main h3 { font-size: 19px; margin: 26px 0 8px; }
+.prd-main h4 { font-size: 15px; margin: 18px 0 6px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.prd-main p, .prd-main li { font-size: 16px; line-height: 1.6; color: var(--ink); }
+.prd-main li { margin: 4px 0; }
+.lede { font-size: 18px !important; color: var(--ink); }
+.callout { border: 1px solid var(--line); border-left: 3px solid var(--accent); background: var(--surface); border-radius: var(--radius-sm); padding: 12px 16px; margin: 16px 0; }
+.callout.warn { border-left-color: var(--warn); }
+.fig { margin: 20px 0; }
+.fig img, .fig svg { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); background: #0d121c; }
+.fig figcaption { color: var(--dim); font-size: 13px; margin-top: 6px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.kpis { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+.kpi { flex: 1 1 180px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.kpi b { display: block; font-size: 26px; font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--dim); font-size: 13px; }
+.gherkin { background: #0d121c; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; overflow: auto; font: 13px/1.55 var(--mono); color: var(--ink); white-space: pre; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+th, td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; }
+th { color: var(--dim); font-weight: 600; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+.num { border-bottom: 1px dotted var(--accent); cursor: help; font-variant-numeric: tabular-nums; }
+.num:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num-missing { border-bottom-color: var(--fail); }
+.src { color: var(--dim); font-size: 12px; }
+.loading { color: var(--dim); }
+.src-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; font-size: 14px; }
+.src-list dt code { color: var(--accent); font: 12px var(--mono); }
+.src-list dd { margin: 0; color: var(--ink); }
+.src-list .why, .src-list .ref { color: var(--dim); }
+.prd-foot { color: var(--faint); font-size: 12px; padding: 32px 20px 48px; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } .src-list { grid-template-columns: 1fr; } }
