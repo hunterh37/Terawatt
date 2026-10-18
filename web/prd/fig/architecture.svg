@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="architecture-title architecture-desc" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title id="architecture-title">Architecture: scenario in, metrics out</title>
+  <desc id="architecture-desc">Catalog data and a scenario feed one pure engine. The engine produces one metrics object, and the seven level modules, the control panels, the business panel and the Vision Pro mode all redraw from it. The app API sends every slider, preset and pick back as a new scenario.</desc>
+  <defs>
+    <marker id="architecture-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8a96aa"/>
+    </marker>
+    <marker id="architecture-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#5ad1ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0b0f17"/>
+  <text x="24" y="32" font-size="16" font-weight="700" fill="#e8edf5">Scenario in, metrics out. Every view reads the same metrics.</text>
+
+  <!-- Connectors first -->
+  <path d="M232 120 H244 A8 8 0 0 1 252 128 V160 A8 8 0 0 0 260 168 H288" fill="none" stroke="#8a96aa" stroke-width="1.5" marker-end="url(#architecture-arrow)"/>
+  <path d="M232 264 H244 A8 8 0 0 0 252 256 V240 A8 8 0 0 1 260 232 H288" fill="none" stroke="#8a96aa" stroke-width="1.5" marker-end="url(#architecture-arrow)"/>
+  <line x1="480" y1="200" x2="528" y2="200" stroke="#5ad1ff" stroke-width="2" marker-end="url(#architecture-arrow-accent)"/>
+  <line x1="704" y1="200" x2="752" y2="200" stroke="#5ad1ff" stroke-width="2" marker-end="url(#architecture-arrow-accent)"/>
+  <line x1="844" y1="428" x2="844" y2="456" stroke="#8a96aa" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#architecture-arrow)"/>
+  <line x1="128" y1="456" x2="128" y2="312" stroke="#8a96aa" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#architecture-arrow)"/>
+
+  <!-- Catalog and sources -->
+  <rect x="24" y="72" width="208" height="96" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="128" y="100" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Catalog and sources</text>
+  <text x="128" y="124" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/data/catalog.js</text>
+  <text x="128" y="144" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/data/sources.js</text>
+
+  <!-- Scenario -->
+  <rect x="24" y="216" width="208" height="96" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="128" y="244" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Scenario</text>
+  <text x="128" y="268" font-size="14" fill="#e8edf5" text-anchor="middle">year, budget, grid, sites</text>
+  <text x="128" y="288" font-size="14" fill="#8a96aa" text-anchor="middle">PRESETS and PARAMS</text>
+
+  <!-- Engine (focal) -->
+  <rect x="288" y="144" width="192" height="112" rx="6" fill="#5ad1ff" fill-opacity="0.1" stroke="#5ad1ff" stroke-width="1.5"/>
+  <text x="384" y="176" font-size="16" font-weight="700" fill="#5ad1ff" text-anchor="middle">Engine</text>
+  <text x="384" y="200" font-size="14" fill="#e8edf5" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">derive(scenario)</text>
+  <text x="384" y="220" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/engine/engine.js</text>
+  <text x="384" y="240" font-size="14" fill="#8a96aa" text-anchor="middle">pure: no DOM, no three.js</text>
+
+  <!-- Metrics -->
+  <rect x="528" y="144" width="176" height="112" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="616" y="176" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Metrics</text>
+  <text x="616" y="200" font-size="14" fill="#e8edf5" text-anchor="middle">sites, totals, finance</text>
+  <text x="616" y="220" font-size="14" fill="#e8edf5" text-anchor="middle">money, checks</text>
+  <text x="616" y="240" font-size="14" fill="#8a96aa" text-anchor="middle">firstFailing</text>
+
+  <!-- Consumers container -->
+  <rect x="752" y="56" width="184" height="372" rx="8" fill="none" stroke="#263147" stroke-dasharray="4,4"/>
+  <text x="844" y="78" font-size="14" fill="#8a96aa" text-anchor="middle">Redraw on every change</text>
+
+  <rect x="764" y="92" width="160" height="72" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="844" y="122" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Seven levels</text>
+  <text x="844" y="146" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/levels/*.js</text>
+
+  <rect x="764" y="176" width="160" height="72" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="844" y="206" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Controls</text>
+  <text x="844" y="230" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/ui/panel/*</text>
+
+  <rect x="764" y="260" width="160" height="72" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="844" y="290" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Business panel</text>
+  <text x="844" y="314" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/ui/business/*</text>
+
+  <rect x="764" y="344" width="160" height="72" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="844" y="374" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Vision Pro (XR)</text>
+  <text x="844" y="398" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">src/xr/*</text>
+
+  <!-- Return path note -->
+  <text x="144" y="372" font-size="14" fill="#8a96aa">Every slider, preset</text>
+  <text x="144" y="392" font-size="14" fill="#8a96aa">and pick comes back</text>
+  <text x="144" y="412" font-size="14" fill="#8a96aa">as a new scenario</text>
+
+  <!-- App API bar -->
+  <rect x="24" y="456" width="912" height="56" rx="6" fill="#111722" stroke="#263147"/>
+  <text x="480" y="480" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">App API: src/main.js and src/scene/stage.js</text>
+  <text x="480" y="500" font-size="14" fill="#8a96aa" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">goTo, zoomIn, zoomOut, setLens, setParam, applyPreset, sizeToDemand</text>
+</svg>

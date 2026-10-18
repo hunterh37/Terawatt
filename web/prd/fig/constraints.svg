@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="constraints-title constraints-desc" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title id="constraints-title">Six checks and the first-failing banner</title>
+  <desc id="constraints-desc">Six constraint checks run in a fixed order: grid, budget, serving, cooling fit, latency and water. The banner shows all six as pills and expands only the first failing one, and tapping it zooms to the level named in its cause.</desc>
+  <defs>
+    <marker id="constraints-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8a96aa"/>
+    </marker>
+    <marker id="constraints-arrow-fail" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ff5c6c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0b0f17"/>
+  <text x="24" y="32" font-size="16" font-weight="700" fill="#e8edf5">Six checks run on every change, read left to right. The first failure wins.</text>
+
+  <!-- Connectors first -->
+  <line x1="404" y1="184" x2="404" y2="244" stroke="#ff5c6c" stroke-width="2" marker-end="url(#constraints-arrow-fail)"/>
+  <line x1="604" y1="288" x2="664" y2="288" stroke="#8a96aa" stroke-width="1.5" marker-end="url(#constraints-arrow)"/>
+  <rect x="620" y="264" width="28" height="18" rx="2" fill="#0b0f17"/>
+  <text x="634" y="278" font-size="14" fill="#8a96aa" text-anchor="middle">tap</text>
+
+  <!-- 1 Grid: passes, but near its limit (499 of 500 MW), so amber -->
+  <rect x="24" y="48" width="144" height="48" rx="8" fill="#ffb547" fill-opacity="0.12" stroke="#ffb547"/>
+  <text x="96" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">1 Grid</text>
+  <text x="96" y="88" font-size="14" fill="#ffb547" text-anchor="middle">near its limit</text>
+  <text x="96" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">Power on Earth</text>
+  <text x="96" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">stays under cap</text>
+  <text x="96" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: fleet</text>
+
+  <!-- 2 Budget: passes -->
+  <rect x="178" y="48" width="144" height="48" rx="8" fill="#3ddc97" fill-opacity="0.12" stroke="#3ddc97"/>
+  <text x="250" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">2 Budget</text>
+  <text x="250" y="88" font-size="14" fill="#3ddc97" text-anchor="middle">passes</text>
+  <text x="250" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">Five-year cost</text>
+  <text x="250" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">fits the budget</text>
+  <text x="250" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: fleet</text>
+
+  <!-- 3 Serving: first failing -->
+  <rect x="332" y="48" width="144" height="48" rx="8" fill="#ff5c6c" fill-opacity="0.18" stroke="#ff5c6c" stroke-width="2"/>
+  <text x="404" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">3 Serving</text>
+  <text x="404" y="88" font-size="14" fill="#ff5c6c" text-anchor="middle">fails first</text>
+  <text x="404" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">Peak demand is</text>
+  <text x="404" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">fully served</text>
+  <text x="404" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: rack</text>
+
+  <!-- 4 Cooling fit: later -->
+  <rect x="486" y="48" width="144" height="48" rx="8" fill="none" stroke="#8a96aa" stroke-dasharray="5,4"/>
+  <text x="558" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">4 Cooling fit</text>
+  <text x="558" y="88" font-size="14" fill="#8a96aa" text-anchor="middle">pill only</text>
+  <text x="558" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">Each rack suits</text>
+  <text x="558" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">its hall cooling</text>
+  <text x="558" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: hall</text>
+
+  <!-- 5 Latency: later -->
+  <rect x="640" y="48" width="144" height="48" rx="8" fill="none" stroke="#8a96aa" stroke-dasharray="5,4"/>
+  <text x="712" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">5 Latency</text>
+  <text x="712" y="88" font-size="14" fill="#8a96aa" text-anchor="middle">pill only</text>
+  <text x="712" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">Interactive work</text>
+  <text x="712" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">has racks nearby</text>
+  <text x="712" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: off-world</text>
+
+  <!-- 6 Water: later -->
+  <rect x="794" y="48" width="144" height="48" rx="8" fill="none" stroke="#8a96aa" stroke-dasharray="5,4"/>
+  <text x="866" y="70" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">6 Water</text>
+  <text x="866" y="88" font-size="14" fill="#8a96aa" text-anchor="middle">pill only</text>
+  <text x="866" y="124" font-size="14" fill="#e8edf5" text-anchor="middle">No evaporative</text>
+  <text x="866" y="144" font-size="14" fill="#e8edf5" text-anchor="middle">cooling in desert</text>
+  <text x="866" y="168" font-size="14" fill="#5ad1ff" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">Zoom to: site</text>
+
+  <!-- Banner -->
+  <rect x="204" y="244" width="400" height="88" rx="8" fill="#ff5c6c" fill-opacity="0.1" stroke="#ff5c6c"/>
+  <text x="404" y="272" font-size="16" font-weight="700" fill="#e8edf5" text-anchor="middle">Constraint banner</text>
+  <text x="404" y="296" font-size="14" fill="#e8edf5" text-anchor="middle">Expands only the first failing check,</text>
+  <text x="404" y="316" font-size="14" fill="#e8edf5" text-anchor="middle">in red, with its message</text>
+
+  <!-- Destination -->
+  <rect x="664" y="244" width="272" height="88" rx="8" fill="#5ad1ff" fill-opacity="0.1" stroke="#5ad1ff" stroke-width="1.5"/>
+  <text x="800" y="272" font-size="16" font-weight="700" fill="#5ad1ff" text-anchor="middle">View zooms to the cause</text>
+  <text x="800" y="296" font-size="14" fill="#e8edf5" text-anchor="middle" font-family="ui-monospace, Menlo, monospace">app.goTo(level, focus)</text>
+  <text x="800" y="316" font-size="14" fill="#8a96aa" text-anchor="middle">Serving: a decode rack</text>
+
+  <!-- Notes -->
+  <text x="24" y="380" font-size="14" fill="#e8edf5">Checks run on every change: a slider, a preset, the year or a pick.</text>
+  <text x="24" y="402" font-size="14" fill="#e8edf5">Each pill shows ok, warn or fail. The banner expands only the first failure.</text>
+  <text x="24" y="424" font-size="14" fill="#ffb547">In the start preset Grid is amber: 499 of 500 MW passes the cap but sits near its limit.</text>
+  <text x="24" y="444" font-size="14" fill="#8a96aa">AC6: the start preset shows Serving as the first failing check.</text>
+  <text x="24" y="466" font-size="14" fill="#8a96aa">AC7: the preset "All of Case B on Earth" fails the Grid check.</text>
+
+  <!-- Legend strip -->
+  <line x1="24" y1="490" x2="936" y2="490" stroke="#263147" stroke-width="1"/>
+  <rect x="24" y="506" width="12" height="12" rx="2" fill="#3ddc97"/>
+  <text x="44" y="517" font-size="14" fill="#8a96aa">Passes</text>
+  <rect x="140" y="506" width="12" height="12" rx="2" fill="#ff5c6c"/>
+  <text x="160" y="517" font-size="14" fill="#8a96aa">First failing check</text>
+  <rect x="340" y="506" width="12" height="12" rx="2" fill="none" stroke="#8a96aa" stroke-dasharray="3,2"/>
+  <text x="360" y="517" font-size="14" fill="#8a96aa">Later in the order: shown as a pill, expanded only if it is the first to fail</text>
+</svg>

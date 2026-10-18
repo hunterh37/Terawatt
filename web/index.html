@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rack to the Future</title>
+  <meta name="description" content="A multi-scale digital twin of the 2035 AI data center: zoom from one chip to the Earth fleet and off-world, with heat, power, cost, sentiment and water lenses. Sundai Hack 145.">
+  <meta property="og:title" content="Rack to the Future">
+  <meta property="og:description" content="Zoom from chip to fleet to orbit. Every number sourced. Sundai Hack 145 at MIT.">
+  <meta property="og:image" content="docs/thumbnail.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='6' width='36' height='52' rx='6' fill='%235ad1ff'/%3E%3Crect x='20' y='14' width='24' height='5' rx='2' fill='%230b0f17'/%3E%3Crect x='20' y='24' width='24' height='5' rx='2' fill='%230b0f17'/%3E%3Crect x='20' y='34' width='24' height='5' rx='2' fill='%230b0f17'/%3E%3Ccircle cx='32' cy='49' r='3' fill='%230b0f17'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/panel.css">
+  <link rel="stylesheet" href="styles/business.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+  </script>
+</head>
+<body>
+  <div id="stage" aria-label="3D view of the data center at the current scale"></div>
+
+  <header class="topbar">
+    <div class="brand">Rack to the Future<small>2035 AI data center twin</small></div>
+    <nav id="breadcrumb" aria-label="Zoom level"></nav>
+    <div id="lens-switch" role="radiogroup" aria-label="Lens"></div>
+    <div class="topbar-right">
+      <button id="tour-btn" class="btn" type="button">Tour</button>
+      <div id="xr-slot"></div>
+    </div>
+  </header>
+
+  <aside id="panel-scenario" aria-label="Scenario controls"></aside>
+
+  <div class="side-right">
+    <section id="constraint-banner" aria-live="polite" aria-label="Constraint checks"></section>
+    <section id="level-card" aria-label="Current level"></section>
+    <section id="panel-business" aria-label="Business case"></section>
+  </div>
+
+  <div id="year-slider" aria-label="Year"></div>
+  <div id="toast" role="status"></div>
+  <div id="boot">Loading the 2035 fleet...</div>
+
+  <noscript>This twin needs JavaScript and WebGL. The PRD explains it without either: <a href="prd/index.html">prd/index.html</a>.</noscript>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

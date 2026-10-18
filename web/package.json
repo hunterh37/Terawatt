@@ -1,0 +1,17 @@
+{
+  "name": "rack-to-the-future",
+  "version": "1.0.0",
+  "description": "Multi-scale digital twin of the 2035 AI data center: chip to fleet to orbit, every number sourced. Sundai Hack 145.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/engine.test.mjs tests/sources.test.mjs",
+    "presets": "node scripts/presets-table.mjs",
+    "fixture": "node scripts/make-fixture.mjs",
+    "serve": "python3 -m http.server 8145"
+  }
+}

@@ -1,0 +1,130 @@
+/* Business panel (#panel-business). Built only from the base.css tokens. */
+
+#panel-business { flex: 0 0 auto; display: flex; flex-direction: column; gap: var(--gap); }
+#panel-business [hidden] { display: none !important; }
+
+/* Header: title, one-line summary, show/hide */
+.bz-head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap); padding: 10px 12px; }
+.bz-head-text { min-width: 0; }
+.bz-head-text strong { display: block; }
+.bz-summary { color: var(--dim); font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.bz-open { flex: 0 0 auto; }
+
+.bz-body { display: flex; flex-direction: column; gap: var(--gap); }
+
+/* Cards */
+.bz-card { padding: 10px 12px 12px; }
+.bz-card-h { margin: 0; font-size: 14px; font-weight: 700; }
+.bz-card-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0; background: none; border: 0;
+  color: var(--ink); cursor: pointer; text-align: left; font-weight: 700; }
+.bz-card-toggle:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.bz-chev { width: 8px; height: 8px; border-right: 2px solid var(--dim); border-bottom: 2px solid var(--dim); transform: rotate(45deg); transition: transform 0.2s; margin-right: 4px; }
+.bz-card-toggle[aria-expanded="false"] .bz-chev { transform: rotate(-45deg); }
+.bz-card-sub { margin: 2px 0 8px; color: var(--dim); font-size: 12px; }
+.bz-card-body { display: block; }
+
+.bz-lede { margin: 6px 0; font-size: 13px; }
+.bz-note { margin: 6px 0; color: var(--faint); font-size: 11px; }
+.bz-note.bz-gloss { color: var(--dim); }
+.bz-note.bz-warn { color: var(--warn); font-size: 12px; }
+.bz-sub { margin: 8px 0 2px; color: var(--accent); font-weight: 600; font-size: 12px; }
+.bz-pos { color: var(--ok); }
+.bz-neg { color: var(--fail); }
+.bz-mini { padding: 3px 10px; font-size: 12px; }
+
+/* 1. Hero */
+.bz-hero { border-color: var(--money); }
+.bz-big { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.bz-big b { font-size: 40px; line-height: 1.05; font-variant-numeric: tabular-nums; color: var(--money); }
+.bz-big span { color: var(--dim); }
+
+.bz-scale { position: relative; height: 40px; margin: 12px 4px 6px; }
+.bz-scale-bar { position: absolute; left: 0; right: 0; top: 17px; height: 6px; border-radius: 3px; background: var(--surface-2); border: 1px solid var(--line); }
+.bz-mark { position: absolute; transform: translateX(-50%); }
+.bz-mark.ref { top: 24px; width: 2px; height: 10px; background: var(--dim); }
+.bz-mark.mine { top: 3px; width: 10px; height: 10px; background: var(--accent); transform: translateX(-50%) rotate(45deg); }
+.bz-mark.be { top: 8px; width: 4px; height: 24px; border-radius: 2px; background: var(--money); }
+
+.bz-legend { list-style: none; margin: 8px 0 0; padding: 0; }
+.bz-leg { display: grid; grid-template-columns: 12px 1fr auto 20px; gap: 8px; align-items: center; padding: 2px 0; }
+.bz-sw { width: 10px; height: 10px; border-radius: 2px; background: var(--dim); }
+.bz-sw.be { background: var(--money); }
+.bz-sw.mine { background: var(--accent); transform: rotate(45deg); }
+.bz-sw.ref { width: 3px; justify-self: center; }
+.bz-leg-l { color: var(--dim); }
+.bz-leg-v { font-variant-numeric: tabular-nums; }
+
+/* 2. Returns and slider */
+.bz-slider { padding: 8px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+.bz-slider-top { display: grid; grid-template-columns: auto auto 1fr; gap: 8px; align-items: center; }
+.bz-slider-top label { font-weight: 600; }
+.bz-slider-out { justify-self: end; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+.bz-slider input[type="range"] { width: 100%; margin: 8px 0 0; accent-color: var(--accent); }
+.bz-slider.is-off input[type="range"] { opacity: 0.4; }
+.bz-slider-range { display: flex; justify-content: space-between; color: var(--faint); font-size: 11px; }
+.bz-model-note { margin-top: 6px; color: var(--warn); font-size: 12px; }
+
+/* 3. Sankey */
+.bz-sankey { display: block; width: 100%; height: auto; overflow: visible; }
+.bz-lab { fill: var(--ink); font: 600 9px var(--font); }
+.bz-labv { fill: var(--dim); font-weight: 400; }
+.bz-link { fill: none; stroke: var(--k, var(--dim)); stroke-opacity: 0.45; }
+.bz-link:hover { stroke-opacity: 0.75; }
+.bz-node { fill: var(--k, var(--dim)); }
+.k-revenue { --k: var(--money); }
+.k-profit { --k: var(--money); }
+.k-gap { --k: var(--fail); }
+.k-spend { --k: var(--ink); }
+.k-racks { --k: var(--accent); }
+.k-buildings { --k: var(--prefill); }
+.k-launch { --k: var(--water); }
+.k-energy { --k: var(--power); }
+.k-carbon { --k: var(--faint); }
+.k-maint { --k: var(--dim); }
+
+/* 4. Site constraints */
+.bz-sitehead { display: flex; align-items: center; justify-content: space-between; gap: var(--gap); margin-bottom: 4px; }
+.bz-place { margin-left: 8px; color: var(--dim); font-size: 12px; }
+.bz-news { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; padding: 4px 0; font-size: 12px; }
+.bz-news a, .bz-news > span:nth-child(2) { min-width: 0; }
+.bz-stance { font-size: 11px; font-weight: 600; color: var(--warn); }
+.bz-news.stance-support .bz-stance { color: var(--ok); }
+.bz-news.stance-oppose .bz-stance { color: var(--fail); }
+.bz-news-meta { grid-column: 2; color: var(--faint); font-size: 11px; }
+.bz-camp { list-style: none; margin: 4px 0; padding: 0; font-size: 12px; }
+.bz-camp li { display: grid; grid-template-columns: 1fr auto 20px; gap: 8px; align-items: baseline; padding: 3px 0; border-bottom: 1px dashed var(--line); }
+.bz-camp li:last-child { border-bottom: 0; }
+.bz-mw { color: var(--dim); text-align: right; font-variant-numeric: tabular-nums; }
+
+.bz-site { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.bz-site:last-child { border-bottom: 0; }
+.bz-site.is-off { opacity: 0.6; }
+.bz-site-top { display: flex; align-items: center; gap: 6px; }
+.bz-site-btn { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 700; cursor: pointer; margin-right: auto; }
+.bz-site-btn:hover, .bz-site-btn:focus-visible { text-decoration: underline; }
+.bz-tag { font-size: 10px; border: 1px solid var(--faint); border-radius: 999px; padding: 0 6px; color: var(--dim); }
+.bz-chips { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 4px; }
+.bz-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; }
+.bz-chip-l { color: var(--dim); font-size: 11px; }
+
+/* 6. Projection charts */
+.bz-chart-title { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; font-weight: 600; font-size: 12px; }
+.bz-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.bz-axis { stroke: var(--line); stroke-width: 1; }
+.bz-cur { stroke: var(--dim); stroke-width: 1; stroke-dasharray: 3 3; }
+.bz-line { stroke: var(--accent); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.bz-chart.joules .bz-line { stroke: var(--power); }
+.bz-dot { fill: var(--accent); }
+.bz-chart.joules .bz-dot { fill: var(--power); }
+.bz-dot.cur { stroke: var(--ink); stroke-width: 1.2; }
+.bz-val { fill: var(--ink); font: 600 9px var(--font); }
+.bz-tick { fill: var(--dim); font: 400 9px var(--font); }
+.bz-tick.cur { fill: var(--ink); font-weight: 600; }
+
+/* 7. Existing data centers */
+.bz-credit { margin: 8px 0 4px; font-size: 12px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.bz-details { margin-top: 6px; }
+.bz-details summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 12px; }
+
+/* Collapsed state on engineering levels: just the header card */
+#panel-business:not(.is-open) .bz-head { opacity: 0.92; }

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="ladder-title ladder-desc" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title id="ladder-title">The zoom ladder: seven scales</title>
+  <desc id="ladder-desc">Seven stacked levels from off-world at the top to the chip at the bottom, with what each shows, what you pick to go one step finer, and the off-world shortcut from site straight to rack.</desc>
+  <defs>
+    <marker id="ladder-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#5ad1ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0b0f17"/>
+  <text x="24" y="32" font-size="16" font-weight="700" fill="#e8edf5">Seven scales, coarsest at the top. Pick an object to zoom one step finer.</text>
+
+  <!-- Off-world shortcut: site to rack, drawn before the rows -->
+  <path d="M700 206 H792 A8 8 0 0 1 800 214 V384 A8 8 0 0 1 792 392 H704" fill="none" stroke="#5ad1ff" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ladder-arrow-accent)"/>
+  <text x="816" y="262" font-size="14" font-weight="700" fill="#5ad1ff">Off-world</text>
+  <text x="816" y="282" font-size="14" font-weight="700" fill="#5ad1ff">shortcut:</text>
+  <text x="816" y="304" font-size="14" fill="#e8edf5">site to rack,</text>
+  <text x="816" y="324" font-size="14" fill="#e8edf5">no building,</text>
+  <text x="816" y="344" font-size="14" fill="#e8edf5">no hall</text>
+
+  <!-- Down arrows between rows (one step finer) -->
+  <polygon points="106,109 118,109 112,117" fill="#8a96aa"/>
+  <polygon points="106,171 118,171 112,179" fill="#8a96aa"/>
+  <polygon points="106,233 118,233 112,241" fill="#8a96aa"/>
+  <polygon points="106,295 118,295 112,303" fill="#8a96aa"/>
+  <polygon points="106,357 118,357 112,365" fill="#8a96aa"/>
+  <polygon points="106,419 118,419 112,427" fill="#8a96aa"/>
+
+  <!-- Row 0: Off-world -->
+  <rect x="24" y="56" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="78" font-size="16" font-weight="700" fill="#e8edf5">Off-world</text>
+  <text x="40" y="98" font-size="14" fill="#5ad1ff">BUSINESS</text>
+  <text x="216" y="78" font-size="14" fill="#e8edf5">Earth, low Earth orbit, the Moon and Mars on one map</text>
+  <text x="216" y="98" font-size="14" fill="#8a96aa">Pick: an orbit, Moon or Mars site opens that site</text>
+
+  <!-- Row 1: Earth fleet -->
+  <rect x="24" y="118" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="140" font-size="16" font-weight="700" fill="#e8edf5">Earth fleet</text>
+  <text x="40" y="160" font-size="14" fill="#5ad1ff">BUSINESS</text>
+  <text x="216" y="140" font-size="14" fill="#e8edf5">A globe with six Earth sites and known AI campuses</text>
+  <text x="216" y="160" font-size="14" fill="#8a96aa">Pick: a site pin opens that site</text>
+
+  <!-- Row 2: Site -->
+  <rect x="24" y="180" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="202" font-size="16" font-weight="700" fill="#e8edf5">Site</text>
+  <text x="40" y="222" font-size="14" fill="#5ad1ff">BUSINESS</text>
+  <text x="216" y="202" font-size="14" fill="#e8edf5">One site: ghost building, substation, cooling plant</text>
+  <text x="216" y="222" font-size="14" fill="#8a96aa">Pick: the building (Earth) or the compute cluster (orbit)</text>
+
+  <!-- Row 3: Building -->
+  <rect x="24" y="242" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="264" font-size="16" font-weight="700" fill="#e8edf5">Building</text>
+  <text x="40" y="284" font-size="14" fill="#ffa94d">ENGINEERING</text>
+  <text x="216" y="264" font-size="14" fill="#e8edf5">Halls in a grid under a cutaway roof</text>
+  <text x="216" y="284" font-size="14" fill="#8a96aa">Pick: a hall</text>
+
+  <!-- Row 4: Hall -->
+  <rect x="24" y="304" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="326" font-size="16" font-weight="700" fill="#e8edf5">Hall</text>
+  <text x="40" y="346" font-size="14" fill="#ffa94d">ENGINEERING</text>
+  <text x="216" y="326" font-size="14" fill="#e8edf5">Rows of racks with hot and cold aisles</text>
+  <text x="216" y="346" font-size="14" fill="#8a96aa">Pick: a rack</text>
+
+  <!-- Row 5: Rack -->
+  <rect x="24" y="366" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="388" font-size="16" font-weight="700" fill="#e8edf5">Rack</text>
+  <text x="40" y="408" font-size="14" fill="#ffa94d">ENGINEERING</text>
+  <text x="216" y="388" font-size="14" fill="#e8edf5">One cabinet: compute trays, power shelf, liquid manifold</text>
+  <text x="216" y="408" font-size="14" fill="#8a96aa">Pick: a tray opens the chip</text>
+
+  <!-- Row 6: Chip -->
+  <rect x="24" y="428" width="676" height="52" rx="8" fill="#111722" stroke="#263147"/>
+  <text x="40" y="450" font-size="16" font-weight="700" fill="#e8edf5">Chip</text>
+  <text x="40" y="470" font-size="14" fill="#ffa94d">ENGINEERING</text>
+  <text x="216" y="450" font-size="14" fill="#e8edf5">A package workbench: dies, memory stacks, heat</text>
+  <text x="216" y="470" font-size="14" fill="#8a96aa">Finest level: add dies or memory stacks, watch the heat</text>
+
+  <!-- Legend strip -->
+  <line x1="24" y1="496" x2="936" y2="496" stroke="#263147" stroke-width="1"/>
+  <rect x="24" y="508" width="12" height="12" rx="2" fill="#5ad1ff"/>
+  <text x="44" y="519" font-size="14" fill="#8a96aa">Business module</text>
+  <rect x="200" y="508" width="12" height="12" rx="2" fill="#ffa94d"/>
+  <text x="220" y="519" font-size="14" fill="#8a96aa">Engineering module</text>
+  <text x="936" y="519" font-size="14" fill="#8a96aa" text-anchor="end">Zoom out always moves one step coarser</text>
+</svg>

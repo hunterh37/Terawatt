@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="eli5-2-title eli5-2-desc">
+  <title id="eli5-2-title">The zoom ladder as nested boxes</title>
+  <desc id="eli5-2-desc">Seven boxes sit one inside the next: off-world, Earth fleet, site, building, hall, rack and chip. A pinch goes one box in and back goes one box out.</desc>
+  <rect width="960" height="540" fill="#0b0f17"/>
+
+  <text x="48" y="44" fill="#e8edf5" font-size="24" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">The zoom ladder: seven boxes, each inside the next</text>
+  <text x="48" y="72" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Pinch a thing to go one box in. Back, or the breadcrumb, goes one box out. Every box draws the same model.</text>
+
+  <!-- level 7: off-world -->
+  <rect x="24" y="96" width="912" height="388" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="40" y="120" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">7  Off-world</text>
+  <text x="920" y="120" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">low Earth orbit, Moon, Mars</text>
+
+  <!-- level 6: Earth fleet (focal) -->
+  <rect x="72" y="132" width="816" height="340" rx="8" fill="#5ad1ff" fill-opacity="0.04" stroke="#5ad1ff" stroke-width="1.5"/>
+  <text x="88" y="156" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">6  Earth fleet</text>
+  <text x="872" y="156" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">six sites on a globe</text>
+
+  <!-- level 5: site -->
+  <rect x="120" y="168" width="720" height="292" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="136" y="192" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">5  Site</text>
+  <text x="824" y="192" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">land, grid tie, cooling plant</text>
+
+  <!-- level 4: building -->
+  <rect x="168" y="204" width="624" height="244" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="184" y="228" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">4  Building</text>
+  <text x="776" y="228" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">halls, roof cut away</text>
+
+  <!-- level 3: hall -->
+  <rect x="216" y="240" width="528" height="196" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="232" y="264" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">3  Hall</text>
+  <text x="728" y="264" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">rows of racks</text>
+
+  <!-- level 2: rack -->
+  <rect x="264" y="276" width="432" height="148" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="280" y="300" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">2  Rack</text>
+  <text x="680" y="300" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">trays of chips, cooling pipes</text>
+
+  <!-- level 1: chip -->
+  <rect x="312" y="312" width="336" height="100" rx="8" fill="#e8edf5" fill-opacity="0.03" stroke="#8a96aa" stroke-opacity="0.7" stroke-width="1.2"/>
+  <text x="328" y="336" fill="#e8edf5" font-size="16" font-weight="700" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">1  Chip</text>
+  <text x="632" y="336" text-anchor="end" fill="#8a96aa" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">dies plus memory</text>
+
+  <!-- chip package: 4 compute dies, 4 memory stacks -->
+  <rect x="424" y="352" width="112" height="48" rx="4" fill="none" stroke="#8a96aa" stroke-width="1"/>
+  <rect x="456" y="356" width="20" height="18" fill="#ffa94d"/>
+  <rect x="484" y="356" width="20" height="18" fill="#ffa94d"/>
+  <rect x="456" y="378" width="20" height="18" fill="#ffa94d"/>
+  <rect x="484" y="378" width="20" height="18" fill="#ffa94d"/>
+  <rect x="432" y="356" width="16" height="18" fill="#5ad1ff"/>
+  <rect x="432" y="378" width="16" height="18" fill="#5ad1ff"/>
+  <rect x="512" y="356" width="16" height="18" fill="#5ad1ff"/>
+  <rect x="512" y="378" width="16" height="18" fill="#5ad1ff"/>
+
+  <text x="48" y="508" fill="#e8edf5" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Shortcut: from an orbital site, a pinch goes straight to a rack, with no building or hall in between.</text>
+  <text x="48" y="528" fill="#8a96aa" font-size="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">Levels follow the scale ladder in the Rack to the Future spec. Schematic, not to scale.</text>
+</svg>

@@ -1,0 +1,177 @@
+<section id="situation">
+  <h2>Situation</h2>
+
+  <p class="lede">Sundai Hack 145 ran at MIT on 18 October 2026. Track 1 asked builders to design the AI data center of 2035: one that can serve its users fast enough while spending as little energy and money as it can. The deck frames the job as a digital twin, which is a computer model that mirrors a real facility so you can change a setting and watch what happens. This PRD describes Rack to the Future, a twin that runs from a single chip up to a fleet of sites on Earth and in orbit.</p>
+
+  <h3>Why now</h3>
+  <p>The deck opens with four facts. Together they say that power, not ideas, now limits AI.</p>
+  <div class="grid-2">
+    <div class="kpi"><b class="num" data-src="s8.gw_cost">$50 to $60B</b><span>to build one gigawatt (a thousand megawatts) of AI data center, chips included, as cited on slide 8</span></div>
+    <div class="kpi"><b class="num" data-src="s8.rack_kw">132 to 600 kW</b><span>power per rack, from the 2025 GB200 NVL72 to the 2027 Kyber rack. A rack is one cabinet of computer chips; a kilowatt (kW) is a thousand watts</span></div>
+    <div class="kpi"><b class="num" data-src="s8.pjm">10x</b><span>rise in PJM grid capacity prices in two years, mostly from data center demand</span></div>
+    <div class="kpi"><b class="num" data-src="s8.launch">under $200/kg</b><span>projected price to launch cargo to orbit by the mid-2030s, when space starts to compete with the ground (see also <span class="num" data-src="ext.google_launch">Google Research</span>)</span></div>
+  </div>
+
+  <h3>The setting</h3>
+  <p>Every team gets the same box to work in: a <span class="num" data-src="s9.setting">$30B</span> five-year budget for chips, buildings, energy and launches; <span class="num" data-src="s9.setting">500 MW</span> of grid power on Earth for all sites together (a megawatt, MW, is a million watts); and a ride to orbit at <span class="num" data-src="s9.setting">$200/kg</span>. The fleet can use six Earth sites, low Earth orbit, the Moon and Mars. Prefill racks run on GPUs or cheap air-cooled cards. Decode racks run on GPUs or LPUs (<span class="num" data-src="s9.fleet">slide 9</span>).</p>
+  <p>Two words matter from here on. <strong>Prefill</strong> is the AI reading your prompt. <strong>Decode</strong> is the AI writing its reply one token at a time, where a token is a small chunk of text. A GPU is a general AI chip with big memory. An LPU is a chip built for fast decode: very fast memory, but not much of it (<span class="num" data-src="s14.memory">200 TB/s but only 160 GB</span>). The score rewards users served within the constraints first, then dollars saved.</p>
+
+  <h3>Who gets served</h3>
+  <p>The workloads are fixed. A chat prompt runs on one open model. An agent task, where an AI works through many steps on its own, runs on a larger model and re-reads a very long saved context at every step (<span class="num" data-src="s10.workloads">slide 10</span>). There are three cases of users to serve.</p>
+  <table>
+    <thead>
+      <tr><th>Case</th><th>Who</th><th>Target users</th><th>Peak tokens per second per user</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A</td><td>Prompters</td><td><span class="num" data-src="s11.cases">4 billion</span></td><td><span class="num" data-src="s11.cases">2.4 out + 5.6 in</span></td></tr>
+      <tr><td>B</td><td>Agent developers</td><td><span class="num" data-src="s11.cases">50 million</span></td><td><span class="num" data-src="s11.cases">28 out + 333 in</span></td></tr>
+      <tr><td>C</td><td>Knowledge workers</td><td><span class="num" data-src="s11.cases">400 million</span></td><td><span class="num" data-src="s11.cases">4.6 out + 40 in</span></td></tr>
+    </tbody>
+  </table>
+  <p>Out means decode and in means prefill. A single agent developer reads roughly <span class="num" data-src="s11.cases">450</span> prompters' worth of tokens, so a small user count can still mean a huge load.</p>
+
+  <h3>The limits that bite</h3>
+  <ul>
+    <li><strong>Time to first token (TTFT).</strong> Chat must start answering in <span class="num" data-src="s13.slo">0.6 s</span>, and an interactive agent in <span class="num" data-src="s13.slo">2 s</span> per step. Distance decides it. Round trips run from <span class="num" data-src="s13.rtt">25 ms</span> in Northern Virginia and <span class="num" data-src="s13.rtt">45 ms</span> in West Texas to <span class="num" data-src="s13.rtt">2.6 s</span> for the Moon and <span class="num" data-src="s13.rtt">25 min</span> for Mars.</li>
+    <li><strong>Memory.</strong> Each new token makes the chip re-read the user's saved context, called the KV cache. One 2035 GPU has <span class="num" data-src="s14.memory">3 TB at 120 TB/s</span>, which fits about <span class="num" data-src="s14.decode">960</span> chat users at once.</li>
+    <li><strong>Power and cooling.</strong> PUE (power usage effectiveness) is total facility power divided by chip power, so a PUE near 1 means little is wasted on cooling (<span class="num" data-src="s15.pue">slide 15</span>). Air cooling tops out at <span class="num" data-src="s15.pue">50 kW</span> per rack and direct liquid cooling at <span class="num" data-src="s15.pue">1.5 MW</span>, while a 2035 GPU rack draws <span class="num" data-src="s12.racks">792 kW</span>. Evaporative cooling uses <span class="num" data-src="s15.water">1.8 L</span> of water for each kWh, and carbon costs <span class="num" data-src="s15.carbon">$100</span> a tonne.</li>
+    <li><strong>Orbit.</strong> Space has no grid cap, but heat can only leave through radiators: <span class="num" data-src="s15.orbit">1,080 m2</span> and <span class="num" data-src="s15.orbit">18 t</span> of hardware per megawatt of GPUs. The slides say orbit ties the Nordics at about <span class="num" data-src="s15.breakeven">$95/kg</span> and West Texas at about <span class="num" data-src="s15.breakeven">$170/kg</span>.</li>
+  </ul>
+
+  <h3>How the track is scored</h3>
+  <p>Slides 19 to 23 ask for a digital twin that spends as few joules per task as it can. A joule is a unit of energy. Judging weighs energy, latency, robustness and explainability (<span class="num" data-src="s22.framing">slides 19 to 23</span>). Slides are not allowed at the demo, so what is on screen has to explain itself.</p>
+
+  <figure class="fig">
+    <img src="fig/eli5-1.svg" alt="Electricity goes into a data center and tokens come out. Joules per token is facility watts divided by tokens per second. Two bars compare 2025 racks and 2035 racks.">
+    <figcaption>What a token costs in energy. The track score is built on joules per task, and a task is many tokens. Bar values are engine outputs for two presets (<span class="num" data-src="d.jtoken">2.88 J and 1.12 J per token</span>).</figcaption>
+  </figure>
+
+  <h3>The problem this build takes on</h3>
+  <p>The spec describes the gap this way. Facility choices about chips, cooling, power, buildings, cost and public reaction sit in different spreadsheets and tools. No one sees how a decision at one scale forces a decision at another. A chip that draws <span class="num" data-src="d.kw_per_chip">5.5 kW</span> forces liquid cooling, which forces a heavy rack, which forces a hall, a building, a grid tie and a site that locals may or may not want. A planner finds out about the grid limit late, from a different file than the one that holds the chip.</p>
+
+  <div class="callout">
+    <p><strong>The core story.</strong> Case B needs about <span class="num" data-src="d.capacity">1,790</span> racks of 2035 GPUs, around <span class="num" data-src="d.capacity">1.4 GW</span> of IT power (the power the chips themselves draw). Earth's grid gives <span class="num" data-src="s9.setting">500 MW</span>. Power gives out first, long before the budget does, and the twin should show where compute can go instead. The spec's worked example points the same way: <span class="num" data-src="spec.example">about 631 racks fit under 500 MW</span> before cooling overhead; with cooling, the start preset fits <span class="num" data-src="d.capacity">575</span>.</p>
+  </div>
+
+  <figure class="fig">
+    <img src="fig/eli5-3.svg" alt="A bar shows Case B needs about 1.4 GW of IT power against a 500 MW Earth grid cap. The part that does not fit moves to low Earth orbit, which has no grid cap but needs launches and radiators.">
+    <figcaption>The grid runs out, so compute goes to orbit. Orbit trades a power cap for launch cost, radiators and a short round trip (<span class="num" data-src="s13.rtt">40 ms</span>). Schematic: it ignores cooling overhead.</figcaption>
+  </figure>
+</section>
+
+<section id="task">
+  <h2>Task</h2>
+
+  <p class="lede">Build one shared model of an AI data center and draw it at seven scales, so that a planner, an engineer and a first-time viewer can all see which limit binds first and why. The project card says you can "zoom from a single chip to an entire fleet of data centers and beyond." (project card)</p>
+
+  <h3>What this build is</h3>
+  <p>The idea is one scenario, one engine and one set of metrics. Every scale reads the same numbers, so a change at one scale shows up at all the others. Five lenses (heat, power, cost, sentiment and water) recolour the scene without moving the camera, or say when they do not apply at that scale; each lens is a colour code that changes what the colours mean. A year slider swaps in each year's rack catalog, 2025 to 2035, and keeps the current rack counts; only a preset or the Size to demand button re-sizes the fleet to the demand. Budget and grid power are sliders, not hard rules, and presets (saved starting points for the sliders) tell a guided story. Six checks run on every change, and the first one that fails shows as a red banner that zooms to its cause.</p>
+  <p>The spec describes a native Apple Vision Pro app. This build takes the same idea to a static web page that draws with three.js, a JavaScript 3D library. It runs in any browser. It also runs in Safari on Apple Vision Pro through WebXR, the browser standard for headset display. Where the slides are silent, the numbers come from the Terawatt app engine, and each one says so.</p>
+
+  <figure class="fig">
+    <img src="fig/eli5-2.svg" alt="Seven nested boxes from off-world on the outside to Earth fleet, site, building, hall, rack and chip on the inside.">
+    <figcaption>The zoom ladder as nested boxes. A pinch goes one box in, back goes one box out, and an orbital site jumps straight to a rack.</figcaption>
+  </figure>
+
+  <h3>Two modules</h3>
+  <p>Each module should be explainable in ten seconds.</p>
+  <div class="grid-2">
+    <div>
+      <h4>Module 1: Business, map first</h4>
+      <p><em>Pick a place, then see what it costs and who objects.</em></p>
+      <ol>
+        <li>Pick a region on the map and read its constraints: power price, carbon, fresh water and local sentiment (how locals feel, from one news article per site).</li>
+        <li>See the facility size in MW, racks and halls.</li>
+        <li>See a ghost building (a see-through outline) sized to that MW.</li>
+        <li>Follow the money flow to NPV, IRR and payback. NPV (net present value) is what all future cash is worth today, IRR (internal rate of return) is the yearly return that makes NPV zero, and payback is the years until the money is back.</li>
+        <li>Check the 2025 to 2035 projection.</li>
+        <li>See existing data centers on the map.</li>
+      </ol>
+    </div>
+    <div>
+      <h4>Module 2: Engineering</h4>
+      <p><em>Build a chip, raise a rack, walk a hall.</em></p>
+      <ol>
+        <li>Stack chips on a workbench and watch power flow and heat build up.</li>
+        <li>Watch racks rise from the table.</li>
+        <li>Inspect a tabletop hall in miniature.</li>
+        <li>Step into a life-size portal in XR (extended reality, meaning headset view) and stand among the racks.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Jobs to be done</h3>
+  <p>Three people hire this build. The spec names planning teams as the main users and lists hackathon judges among the users. These jobs follow from the spec and the track deck, not from interviews.</p>
+
+  <h4>1. The planner: where and what to build</h4>
+  <p><em>When I have a budget and a grid cap and must choose where and what to build, show me which limit I hit first and what it costs, so I can decide with evidence.</em></p>
+  <ul>
+    <li><strong>Functional.</strong> Compare regions on power price, carbon, water and local sentiment. Size the facility. See NPV, IRR, payback and the break-even price per user per month.</li>
+    <li><strong>Social.</strong> Defend the choice to finance and community partners, with a source behind every number.</li>
+    <li><strong>Emotional.</strong> Avoid being surprised late by the grid, the budget or a local backlash.</li>
+    <li><strong>Pain.</strong> Today the answers sit in separate spreadsheets, and the assumptions are hidden.</li>
+    <li><strong>Done when</strong> AC1, AC3, AC6, AC7, AC9, AC10 and AC11 pass.</li>
+  </ul>
+
+  <h4>2. The engineer: can it be cooled and served</h4>
+  <p><em>When I have a chip or rack design, show me whether it can be cooled and still serve the users, so I can fix the weak link before it is built.</em></p>
+  <ul>
+    <li><strong>Functional.</strong> Add compute dies and memory stacks, and read chip power and heat flux (watts per square centimetre of chip). Check each rack against its cooling. Walk a hall. Compare 2025 and 2035 racks.</li>
+    <li><strong>Social.</strong> Show a colleague the reasoning on one shared model instead of a slide.</li>
+    <li><strong>Emotional.</strong> Feel sure nothing hot is hiding in the numbers.</li>
+    <li><strong>Pain.</strong> A 2035 GPU rack draws <span class="num" data-src="s12.racks">792 kW</span>, far above the <span class="num" data-src="s15.pue">50 kW</span> an air-cooled rack can take.</li>
+    <li><strong>Done when</strong> AC4, AC5, AC12 and AC14 pass.</li>
+  </ul>
+
+  <h4>3. The judge or member of the public: understand it in ten seconds</h4>
+  <p><em>When I see a short demo with no slides, I want to get the point in ten seconds, so I can tell whether the design serves users with less energy.</em></p>
+  <ul>
+    <li><strong>Functional.</strong> See the story end to end: the grid binds, compute goes to orbit, and a price comes out.</li>
+    <li><strong>Social.</strong> Explain it to the next person after one viewing.</li>
+    <li><strong>Emotional.</strong> Trust that the numbers are real. Every number in the panels has an i badge that names its source.</li>
+    <li><strong>Pain.</strong> Dense dashboards that need a guide. Explainability is one of the four scoring axes (<span class="num" data-src="s22.framing">slides 19 to 23</span>).</li>
+    <li><strong>Done when</strong> AC1, AC2, AC4, AC6, AC8 and AC13 pass.</li>
+  </ul>
+
+  <h3>The demo story, in numbers</h3>
+  <p>These are start-preset readings from the engine, shown to set expectations. The app always shows live values, and they change with every slider.</p>
+  <div class="grid-2">
+    <div class="kpi"><b class="num" data-src="d.capacity">32%</b><span>of peak demand served by <span class="num" data-src="d.capacity">575</span> racks</span></div>
+    <div class="kpi"><b class="num" data-src="d.facility">499 MW</b><span>drawn from a <span class="num" data-src="s9.setting">500 MW</span> grid cap</span></div>
+    <div class="kpi"><b class="num" data-src="d.cost5yr">$23.6B</b><span>five-year cost against a <span class="num" data-src="s9.setting">$30B</span> budget</span></div>
+    <div class="kpi"><b class="num" data-src="a.breakeven">$34.45</b><span>break-even price per user per month, beside <span class="num" data-src="ext.sub_price">$20</span> plans and plans from <span class="num" data-src="ext.sub_price">$100</span></span></div>
+  </div>
+  <p>The grid has almost no room and the budget still has room, yet only about a third of demand is served. The Serving check asks whether the racks deliver enough tokens for the whole case at peak, so it is the first one to fail. A tap on it drops the view to the decode racks at the West Texas site. Adding orbit with LPU racks lifts service to <span class="num" data-src="d.capacity">97%</span>, but the five-year cost rises to <span class="num" data-src="d.cost5yr">$39.7B</span> and the budget check fails next. The break-even price then falls to <span class="num" data-src="a.breakeven">$19.66</span>, close to the <span class="num" data-src="ext.sub_price">$20</span> plans. Whether that trade is worth it depends on launch cost and radiator mass, which the sliders let a viewer test.</p>
+
+  <figure class="fig">
+    <img src="fig/eli5-4.svg" alt="Break-even price is yearly running cost plus the build cost spread over five years, divided by users served and by twelve months. The start preset gives $34.45, drawn on a scale beside the $20 plans and the plans from $100.">
+    <figcaption>The break-even price idea. It tells you what to charge without guessing 2035 prices (<span class="num" data-src="a.breakeven">formula and reason</span>).</figcaption>
+  </figure>
+
+  <h3>Success criteria</h3>
+  <p>Success is binary: all fourteen acceptance criteria, AC1 to AC14, pass in a clean browser before the evening demo. QA runs them as Given, When, Then tests; the Action section lists them word for word. A second check is human: a first-time viewer can say the story back in ten seconds.</p>
+  <table>
+    <thead>
+      <tr><th>What must be true</th><th>Criteria</th><th>Serves</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Moving between scales works. Picking a site updates the view and the breadcrumb. Zoom out goes one level coarser. An orbital site goes straight to a rack.</td><td>AC1, AC2, AC3</td><td>All three</td></tr>
+      <tr><td>Lenses recolour the objects and the legend while the camera stays still.</td><td>AC4</td><td>Engineer, judge</td></tr>
+      <tr><td>The year slider swaps in the 2025 rack (<span class="num" data-src="s12.racks">132 kW, 72 GPUs</span>) and energy per token rises.</td><td>AC5</td><td>Engineer</td></tr>
+      <tr><td>The first failing check shows as a banner and a tap goes to its cause. The all-of-Case-B-on-Earth preset fails Grid against the <span class="num" data-src="s9.setting">500 MW</span> cap.</td><td>AC6, AC7</td><td>Planner, judge</td></tr>
+      <tr><td>Every number in the panels is traceable, no shipped text file outside vendor/ contains an em-dash, and no readout row has a missing source id.</td><td>AC8, AC13</td><td>All three</td></tr>
+      <tr><td>The business panel shows NPV, IRR, payback, the break-even price beside plan prices, and a money-flow chart. Changing the price updates NPV and IRR. A 2025 to 2035 chart shows racks and energy per token. Known AI campuses show as markers, and the Cleanview US totals of data centers with reported capacity (<span class="num" data-src="cv.map">1,372 operating, 2,689 planned</span>) are credited with a link.</td><td>AC9, AC10, AC11</td><td>Planner</td></tr>
+      <tr><td>On Apple Vision Pro, Enter VR puts the table at desk height, a pinch zooms in, and an in-world panel switches lens, year and preset.</td><td>AC12</td><td>Engineer, judge</td></tr>
+      <tr><td>Adding compute dies raises chip power and heat flux. Adding HBM stacks (high-bandwidth memory, stacked next to the compute dies) moves part of the chip's power from the dies to memory, which changes the heat flux. The heat lens recolours the dies.</td><td>AC14</td><td>Engineer</td></tr>
+    </tbody>
+  </table>
+  <p>Guardrails that must not slip: no number appears without a source, geometry is labelled schematic wherever a size could be read as data, and the page makes no requests to other sites.</p>
+
+  <h3>Out of scope</h3>
+  <ul>
+    <li>Detailed airflow or electrical simulation, live facility data, and an optimizer that picks the best fleet. The spec lists these as non-goals: the twin lays out what follows from a choice, and people make the choice.</li>
+    <li>The spec's manufacturing and physics-simulation lenses. This build has the five lenses listed above.</li>
+    <li>Live social media scraping. Sentiment is one recent news article per site with a stance label, which is a sample, not a poll (<span class="num" data-src="ext.sentiment">source note</span>).</li>
+    <li>Engineering drawings. Shapes are simple on purpose. The spec names false precision as a risk, so schematic views are labelled and assumptions carry their reasons.</li>
+  </ul>
+</section>

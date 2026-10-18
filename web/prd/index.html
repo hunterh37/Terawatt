@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rack to the Future PRD</title>
+  <meta name="description" content="Product requirements for Rack to the Future, a multi-scale digital twin of the 2035 AI data center, written in STAR form: Situation, Task, Action, Result.">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="prd.css">
+</head>
+<body class="prd">
+  <header class="prd-head">
+    <p class="eyebrow">Sundai Hack 145, Track 1: Build the AI data center of 2035</p>
+    <h1>Rack to the Future</h1>
+    <p class="sub">A multi-scale digital twin of the 2035 AI data center. Zoom from one chip to the Earth fleet and into orbit, switch lenses for heat, power, cost, sentiment and water, and watch the first constraint break. Every number is sourced.</p>
+    <p class="actions">
+      <a class="btn primary" href="../index.html">Open the twin</a>
+      <a class="btn" href="motion/index.html">Watch the 42-second explainer</a>
+      <a class="btn" href="#sources">Sources</a>
+    </p>
+    <p class="credit">Built at Sundai Hack 145 by Wilson Wu, from the Rack to the Future idea and technical spec by Jason Morris and Hunter Harris.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#situation">S: Situation</a><a href="#task">T: Task</a><a href="#action">A: Action</a><a href="#result">R: Result</a>
+    </nav>
+  </header>
+
+  <main class="prd-main">
+    <div data-include="sections/situation-task.html"><p class="loading">Loading Situation and Task...</p></div>
+    <div data-include="sections/action.html"><p class="loading">Loading Action...</p></div>
+    <div data-include="sections/result.html"><p class="loading">Loading Result...</p></div>
+    <section id="sources">
+      <h2>Sources</h2>
+      <p class="lede">Every number in the twin and in this document carries one of these ids. Tap any underlined number to see its entry.</p>
+      <div id="sources-list"></div>
+    </section>
+  </main>
+
+  <footer class="prd-foot">MIT licence. Data sources keep their own terms; Cleanview figures are credited, not redistributed.</footer>
+
+  <script type="module">
+    import { SOURCES } from '../src/data/sources.js';
+    import { installSourcePopover, el } from '../src/ui/common.js';
+
+    async function include(node) {
+      const url = node.getAttribute('data-include');
+      try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        node.outerHTML = await res.text();
+      } catch (e) {
+        node.innerHTML = `<p class="loading">Could not load ${url} (${e.message}). Open this page over http, not file://.</p>`;
+      }
+    }
+    await Promise.all([...document.querySelectorAll('[data-include]')].map(include));
+
+    // Numbers cite sources with a span of class num whose data-src names a source id. Make each one a focusable trigger.
+    for (const n of document.querySelectorAll('.num[data-src]')) {
+      n.setAttribute('role', 'button'); n.setAttribute('tabindex', '0');
+      if (!SOURCES[n.dataset.src]) n.classList.add('num-missing');
+      n.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); n.click(); } });
+    }
+    installSourcePopover(SOURCES);
+
+    const KIND = { slide: 'Challenge slides', spec: 'Rack to the Future spec', team: 'Terawatt app engine', external: 'Published sources',
+      cleanview: 'Cleanview', derived: 'Computed in the engine', assumption: 'Assumptions (each with its reason)' };
+    const list = document.getElementById('sources-list');
+    for (const [kind, title] of Object.entries(KIND)) {
+      const rows = Object.entries(SOURCES).filter(([, s]) => s.kind === kind);
+      if (!rows.length) continue;
+      list.append(el('h3', {}, title), el('dl', { class: 'src-list' }, ...rows.flatMap(([id, s]) => [
+        el('dt', { id: `src-${id}` }, el('code', {}, id)),
+        el('dd', {}, s.label, s.why ? el('span', { class: 'why' }, ` Why: ${s.why}`) : null,
+          s.ref ? el('span', { class: 'ref' }, ` ${s.ref}.`) : null,
+          s.url ? el('a', { href: s.url, target: '_blank', rel: 'noopener' }, ' Link') : null),
+      ])));
+    }
+    if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+  </script>
+</body>
+</html>
